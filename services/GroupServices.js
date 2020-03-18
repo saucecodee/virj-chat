@@ -3,20 +3,49 @@ const CustomError = require("../helpers/CustomError");
 const userService = require("../services/UserServices")
 
 class UsersService {
+  constructor() {
+    this.createUser = this.createUser.bind(this);
+    this.createGroup = this.createGroup.bind(this);
+  }
+  
   async createGroup(data) {
-    const user = new Group(data);
+    console.log(data, "=================================")
 
-    await user.save();
+    //create user
+    let user = this.createUser(data.username)
 
-    return code;
+    //create group
+    let groupCode = this.generateGroupCode()
+    const group = new Group({
+      creator: user._id,
+      name: data.name,
+      code: groupCode,
+      memebers: [user._id]
+    });
+
+    await group.save();
+
+    return {
+      groupId: _id,
+      creator: group.creator,
+      code: group.code
+    };
   }
 
-  async joinGroup() {
+  async joinGroup(data) {
     //check if group code exists
+    let user = this.createUser(data.username)
+
     //check if memeber name already exits in group
+    const group = await Group.findOne({ code: data.code });
+
     //add user to group to memebers array
-    //emit joined
-    return await Group.find({});
+    group.memebers.push(user._id)
+    await group.save();
+    return {
+      groupId: _id,
+      code: group.code
+    };
   }
 
   async leaveGroup() {
@@ -51,19 +80,8 @@ class UsersService {
     return group;
   }
 
-  async addGroupMemeber(username) {
-    //check if user exist in memebers array
-    //create user
-    userService.createUser(username)
-    //add user to the array
-    //return usser
-
-    const user = await Group.findByIdAndUpdate({ _id: userId }, data, {
-      new: true,
-    });
-
-    if (!user) throw new CustomError("user dosen't exist", 404);
-
+  async createUser(username) {
+    const user = useruserService.createUser(username)
     return user;
   }
 
