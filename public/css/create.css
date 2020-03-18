@@ -1,0 +1,10 @@
+.create {
+  width: 600px;
+  background-color: white;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.create-form * {
+  width: 80%;
+}
