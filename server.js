@@ -1,5 +1,6 @@
-require('express-async-errors')
+// require('express-async-errors')
 const CustomError = require("./helpers/CustomError");
+const path = require("path")
 const http = require('http');
 const express = require('express');
 const app = express();
@@ -17,7 +18,7 @@ middlewares(app);
 app.use('/api', routes(server))
 
 app.use('/', (req, res) => {
-  res.status(200).sendFile(express.static("public/index.html"));
+  res.status(200).sendFile(path.join(__dirname, "public/index.html"));
 })
 
 app.use((req, res, next) => {
@@ -28,7 +29,7 @@ app.use(errorHandler);
 
 server.listen(port, () => {
   console.log("::: server listening on port " + port + ". Open in your browser http://localhost:" + port + "/");
-  // databaseConfig();
+  databaseConfig();
 });
 
 server.on('error', (error) => {

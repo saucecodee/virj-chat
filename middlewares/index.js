@@ -5,7 +5,6 @@ module.exports = (app) => {
      app.use(morgan('dev'));
      app.use(express.json());
      app.use(express.static("public"));
-     app.use('/uploads', express.static("/uploads"));
      app.use(express.urlencoded({ extended: false }));
      app.use((req, res, next) => {
           res.header("Access-Control-Allow-Origin", "*")
