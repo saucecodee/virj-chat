@@ -3,6 +3,8 @@
 /* Colors */
 :root {
   --primary: steelblue;
+  --secondary-text-color: grey;
+  --primary-invert: white;
 }
 
 *, ::before, ::after {
