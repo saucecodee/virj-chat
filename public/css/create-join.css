@@ -17,13 +17,17 @@
 .create-form {
   display: flex;
   flex-flow: column wrap;
+  padding: 0 2rem;
 }
-.create-form input, .create-form button  {
+.create-form input {
   width: calc(100% - 100px);
   margin: 0 auto;
   padding: 0.5rem;
 }
 .create-form button  {
+  width: 20% !important;
+  margin: 0 auto !important;
+  padding: 0.5rem;
   background-color: var(--primary);
   border: 1px solid var(--primary);
   cursor: pointer;
@@ -41,8 +45,8 @@
   color: var(--secondary-text-color);
   margin-bottom: 0.3rem;
 }
-.create-form label:not(:last-child) {
-  margin-bottom: 1rem;
+.create-form label {
+  margin-bottom: 2rem;
 }
 
 
