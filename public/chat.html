@@ -23,6 +23,7 @@
           </div>
           
         </div>
+        <div style="margin-top: 4rem; ">
 
         <p style="text-align: center; color: #636161;"> Today</p>
         <div class="alert">
@@ -49,6 +50,21 @@
             <p>hello Guys Thanks for having me in the virj chat </p>
             <div class="sent-time">3:30pm </div>
           </div>
+
+          <div class="message sent">
+            <div class="arrow"></div>
+            <div class="sent-by"><h4>vince{}</h4></div>
+            <p>hello Guys Thanks for having me in the virj chat </p>
+            <div class="sent-time">3:30pm </div>
+          </div>
+        <form action="">
+          <div id="input-box">
+            <input id="input" size="100" type="text" name="message">
+            <button id="send" type="submit"><img width="20px" src="./assets/plane.svg" alt="send plane"></button>
+          </div>
+        </form>
+          
+          </div>
         </div>
         <div id="members">
           <div id="membersHeader">
@@ -63,5 +79,48 @@
           </ul>
         </div>
      </div>
+
+     <script>
+       const cont = document.querySelector("#container");
+       const sendBtn = document.querySelector("#send");
+       const messageField = document.querySelector("#input");
+       const messagesContainer = document.querySelector("#messages")
+
+       class Message {
+        constructor(name, message, time) {
+          //create element 
+          const markup = `
+         <div class="message sent">
+            <div class="arrow"></div>
+            <div class="sent-by"><h4>${this.name}</h4></div>
+            <p>${this.message} </p>
+            <div class="sent-time">${this.time} </div>
+          </div>
+        `
+
+
+        return markup
+        }
+      }
+
+      const message = new Message()
+      messagesContainer.append(message)
+
+       sendBtn.addEventListener('click', (e) => {
+         e.preventDefault();
+         console.log(messageField.value);
+
+         messagesContainer.appendChild(`
+         <div class="message sent">
+            <div class="arrow"></div>
+            <div class="sent-by"><h4>vince{}</h4></div>
+            <p>${messageField.value} </p>
+            <div class="sent-time">3:30pm </div>
+          </div>
+        `)
+         
+       })
+       cont.scrollTop = cont.scrollHeight;
+     </script>
 </body>
 </html>
