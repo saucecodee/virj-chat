@@ -2,6 +2,7 @@ body {
   padding: 0 2rem;
 }
 .container{
+  position: relative;
   width: 700px;
   margin: 2rem auto;
   border: 3px solid #c4bdce;
@@ -25,6 +26,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 3rem;
+  border-bottom: 2px solid gray;
 }
 
 .chat-header #left {
@@ -90,3 +92,35 @@ body {
   position: absolute;
   transform: rotate(29deg);
 }
+
+.container > #members{
+  position: absolute;
+  top: 88px;
+  left: 0px;
+  height: 650px;
+  width: 350px;
+  background-color: rgba(255, 255, 255, 0.945);
+  padding: 20px;
+}
+
+.container > #members > ul{
+  padding-top: 0px;
+  list-style-type: none;
+}
+
+.container > #members > ul > li{
+  padding: 10px;
+  /* background-color: white; */
+  color: black;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.308);
+}
+
+/* .container > #members > ul > li:nth-child(odd){
+  background-color: gray;
+  color: white;
+}
+
+.container > #members > ul > li:nth-child(even){
+  background-color: white;
+  color: gray;
+} */
