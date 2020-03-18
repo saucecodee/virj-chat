@@ -1,1 +1,6 @@
 /* Global styles */
+
+/* Colors */
+:root {
+  --primary: steelblue;
+}
