@@ -23,22 +23,30 @@
   width: calc(100% - 100px);
   margin: 0 auto;
   padding: 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--secondary-text-color);
+  outline: 0;
 }
 .create-form button  {
   width: 20% !important;
-  margin: 0 auto !important;
+  border-radius: 0.4rem;
   padding: 0.5rem;
   background-color: var(--primary);
   border: 1px solid var(--primary);
   cursor: pointer;
   color: white;
 }
+#button-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .create-form button:hover  {
   background-color: var(--primary-invert);
   cursor: pointer;
   color: var(--primary);
 }
-.create-form label * {
+.create-form label input {
   width: 100%;
 }
 .create-form label p{
