@@ -1,34 +1,37 @@
-const Group = require("../models/user");
+const Group = require("../models/Group");
 const CustomError = require("../helpers/CustomError");
-const userService = require("../services/UserServices")
+const userService = require("../services/UserServices");
 
 class UsersService {
   constructor() {
     this.createUser = this.createUser.bind(this);
     this.createGroup = this.createGroup.bind(this);
+    this.generateGroupCode = this.generateGroupCode.bind(this);
   }
-  
-  async createGroup(data) {
-    console.log(data, "=================================")
 
+  async createGroup(data) {
     //create user
-    let user = this.createUser(data.username)
+    let user = await this.createUser(data.username)
+
+    //get group code
+    let groupCode = await this.generateGroupCode()
 
     //create group
-    let groupCode = this.generateGroupCode()
     const group = new Group({
       creator: user._id,
-      name: data.name,
+      name: data.groupName,
       code: groupCode,
-      memebers: [user._id]
+      members: [user._id]
     });
 
-    await group.save();
+    let g = await group.save();
+
+    console.log(g);
 
     return {
-      groupId: _id,
-      creator: group.creator,
-      code: group.code
+      groupId: g._id,
+      creator: g.creator,
+      code: g.code
     };
   }
 
@@ -63,8 +66,14 @@ class UsersService {
 
   async generateGroupCode(userId) {
     //generate 6 code
+    var chars = 'acdefhiklmnoqrstuvwxyz0123456789ABCDEFGHIJKLMNOP'.split('');
+    var result = '';
+    for (var i = 0; i < 6; i++) {
+      var x = Math.floor(Math.random() * chars.length);
+      result += chars[x];
+    } 
     //check if code exhist else generate again
-    return code;
+    return result;
   }
 
 
@@ -81,7 +90,7 @@ class UsersService {
   }
 
   async createUser(username) {
-    const user = useruserService.createUser(username)
+    const user = await userService.createUser(username)
     return user;
   }
 

@@ -3,9 +3,9 @@ const CustomError = require("../helpers/CustomError");
 
 class UserService {
   async createUser(data) {
-    const user = new User(data);
-    await user.save();
-    return user;
+    const user = new User({ username: data});
+    let userData = await user.save();
+    return userData;
   }
 
   async deleteUser(userId) {

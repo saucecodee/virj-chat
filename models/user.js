@@ -7,9 +7,6 @@ const UserSchema = new Schema(
       type: String,
       required: [true, "field name is required"]
     }
-  },
-  {
-    timestamps: true
   });
 
 module.exports = mongoose.model("Users", UserSchema);
