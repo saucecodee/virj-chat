@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const userRoutes = require("./userRoute");
+const groupRoute = require("./groupRoute");
 
 module.exports = function (server) {
   const io = require('socket.io')(server);
@@ -8,7 +8,7 @@ module.exports = function (server) {
   router.get("/test", (req, res) => {
     res.send("yehh!==========================");
   });
-  router.use("/groups", groupsRoutes());
+  router.use("/groups", groupRoute());
 
 
   io.on('connection', (socket) => {

@@ -8,9 +8,9 @@ const {
 
 module.exports = function () {
   router.post("/", createGroup);
-  router.post("/:GroupId/join", joinGroup);
-  router.post("/:GroupId/leave", leaveGroup);
-  router.delete("/:GroupId", deleteGroup);
+  router.post("/:groupId/join", joinGroup);
+  router.post("/:groupId/leave", leaveGroup);
+  router.delete("/:groupId", deleteGroup);
 
   return router;
 };
