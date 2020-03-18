@@ -4,7 +4,27 @@
   padding: 1rem;
   margin: 0 auto;
 }
-
-.create-form * {
-  width: 80%;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
+.create-group {
+  color: var(--primary);
+  text-align: center;
+}
+.create-form {
+  display: flex;
+  flex-flow: column wrap;
+}
+.create-form * {
+  width: calc(100% - 100px);
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+.create-form label * {
+  width: 100%;
+}
+
+

@@ -14,7 +14,7 @@ const port = process.env.PORT || 3030;
 
 middlewares(app);
 
-app.use('/api', routes())
+app.use('/api', routes(server))
 
 app.use('/', (req, res) => {
   res.status(200).sendFile(express.static("public/index.html"));
