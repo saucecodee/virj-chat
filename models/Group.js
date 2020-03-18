@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const GroupSchema = new Schema(
   {
     creator: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Users,
       required: [true, "field creator is required"]
     },
     name: {
@@ -14,6 +15,12 @@ const GroupSchema = new Schema(
     code: {
       type: String,
       required: [true, "field code is required"]
+    },
+    memebers: {
+      type: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: Users
+      }]
     },
   },
   {
