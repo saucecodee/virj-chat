@@ -10,6 +10,8 @@ body {
   background-color: #c4bdcec2;
   border-radius: .8rem;
   padding: 1.5rem;
+
+  overflow-x: hidden;
 }
 
 .alert p{
@@ -102,6 +104,7 @@ body {
   width: 350px;
   background-color: rgba(255, 255, 255, 0.945);
   padding: 20px;
+  animation: slideIn 0.3s forwards;
 }
 
 .container > #members > ul{
@@ -144,4 +147,15 @@ body {
   border-radius: 50%;
   background-color: black;
   color: white;
+  cursor: pointer;
+}
+
+@keyframes slideIn {
+  0% { right: -100%; }
+  100% { right: 0px;}
+}
+
+@keyframes slideOut {
+  0% { right: 0px;}
+  100% { right: -100%;}
 }
