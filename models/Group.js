@@ -5,7 +5,7 @@ const GroupSchema = new Schema(
   {
     creator: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: Users,
+      ref: "Users",
       required: [true, "field creator is required"]
     },
     name: {
@@ -16,10 +16,10 @@ const GroupSchema = new Schema(
       type: String,
       required: [true, "field code is required"]
     },
-    memebers: {
+    members: {
       type: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: Users
+        ref: "Users"
       }]
     },
   },

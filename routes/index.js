@@ -17,20 +17,28 @@ module.exports = function (server) {
 
   io.on('connection', (socket) => {
 
-    socket.on('user-left', () => {
-      io.emit('movement', { user: socket.name, event: 'left' });
+    socket.on('leave', (data) => {
+      let groupId = data.groupId
+
+      socket.leave(groupId);
+      io.to(groupId).emit('movement', { user: socket.username, event: 'left' });
     });
 
-    socket.on('user-created', (user) => {
-      socket.name = user.name;
-      socket.userId = user.id
-      io.emit('movement', { user: socket.name, event: 'joined' });
+    socket.on('join', (data) => {
+      socket.name = data.username;
+      socket.userId = data.userId;
+      let groupId = data.groupId
+      
+      socket.join(groupId);
+      io.to(groupId).emit('movement', { user: socket.username, event: 'joined' });
     });
+    
+    socket.on('send-message', (data) => {
+      let groupId = data.groupId
 
-    socket.on('send-message', (message) => {
-      io.emit('message', {
-        msg: message.text,
-        user: socket.name,
+      io.to(groupId).emit('message', {
+        message: data.message,
+        user: socket.username,
         userId: socket.userId,
         sentAt: new Date()
       });
