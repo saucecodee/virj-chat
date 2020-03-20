@@ -8,6 +8,10 @@ module.exports = function (server) {
   router.get("/test", (req, res) => {
     res.send("yehh!==========================");
   });
+
+
+
+  
   router.use("/groups", groupRoute());
 
 

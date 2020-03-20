@@ -10,7 +10,7 @@ function snack(text) {
 $('.create-village-button').onclick = e => {
   e.preventDefault();
   const val1 = $('.create-form')['username'].value.trim();
-  const val2 = $('.create-form')['village-name'].value.trim();
+  const val2 = $('.create-form')['village-id'].value.trim();
 
   if (val1.length > 0 && val2.length > 0) {
     // Check for server responce
