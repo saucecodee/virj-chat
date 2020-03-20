@@ -1,0 +1,192 @@
+body {
+  padding: 0 2rem;
+  overflow-y: hidden;
+}
+.container{
+  position: relative;
+  width: 700px;
+  height: 680px;
+  margin: 2rem auto ;
+  border: 3px solid #c4bdce;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #c4bdcec2;
+  border-radius: .8rem;
+  padding: 0 1.5rem 3rem;
+  padding: 1.5rem;
+
+  overflow-x: hidden;
+  padding: 0 1.5rem;
+}
+
+.alert p{
+  width: 250px;
+  background-color: #eee5f7a1;
+  color: grey;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: .8rem;
+  padding: 3px 0;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  border-bottom: 2px solid gray;
+  position: fixed;
+  width: 695px;
+  z-index: 5;
+  background-color: #c4bdce;
+  margin: 0 -1.5rem;
+  top: 6.1rem;
+}
+
+.chat-header #left {
+  margin-top:  1.3rem;
+}
+
+.chat-header #left span {
+  padding: 1rem;
+}
+
+.chat-header #left span a{
+  text-decoration: none;
+  color: grey;
+}
+.chat-header #left span a:hover {
+  color: #000;
+}
+
+.chat-area {
+  margin-top: 5rem;
+  margin-bottom: 4rem;
+}
+
+#messages {
+  display: flex;
+  flex-direction: column;
+}
+.message {
+  width: 250px;
+  background-color: #fff;
+  border-radius: .4rem;
+  padding: .3rem .5rem;
+  margin: .4rem 0;
+  position: relative;
+}
+
+.message.sent {
+  align-self: flex-end;
+}
+
+.sent-time {
+  text-align: right;
+}
+
+.message h4{
+  margin: 0;
+}
+
+.arrow {
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent; 
+  
+  border-right:18px solid #fff; 
+  position: absolute;
+  left: -12px;
+  top: -5.3px;
+  transform: rotate(28deg);
+}
+
+.message.sent .arrow{
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  left: 95%;
+  border-right: 18px solid #fff;
+  position: absolute;
+  transform: rotate(29deg);
+}
+
+.container > #members{
+  display: none;
+  position: absolute;
+  top: 88px;
+  right: 0px;
+  height: 650px;
+  width: 350px;
+  background-color: rgba(255, 255, 255, 0.945);
+  padding: 20px;
+  animation: slideIn 0.3s forwards;
+}
+
+.container > #members > ul{
+  padding-top: 0px;
+  list-style-type: none;
+}
+
+.container > #members > ul > li{
+  padding: 10px;
+  /* background-color: white; */
+  color: black;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.308);
+}
+
+form {
+  position: fixed;
+  bottom: 1.5rem;
+}
+
+form button {
+  padding: .2rem;
+  height: 100%;
+}
+
+form input {
+  padding: .5rem;
+}
+
+/* .container > #members > ul > li:nth-child(odd){
+  background-color: gray;
+  color: white;
+}
+
+.container > #members > ul > li:nth-child(even){
+  background-color: white;
+  color: gray;
+} */
+
+#membersHeader{
+  /* border: 2px solid green; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#membersHeader > h3{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  padding: 13px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+@keyframes slideIn {
+  0% { right: -100%; }
+  100% { right: 0px;}
+}
+
+@keyframes slideOut {
+  0% { right: 0px;}
+  100% { right: -100%;}
+}
