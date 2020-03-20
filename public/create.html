@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./css/body.css">
   <link rel="stylesheet" href="./css/create-join.css">
   <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
@@ -16,17 +17,26 @@
       <form class="create-form" action="">
         <label for="username">
           <p>Enter a username</p>
-          <input placeholder="JohnHolt" type="text" name="username" id="">
+          <input required placeholder="JohnHolt" type="text" name="username" id="">
         </label>
         <label id="button-cont" for="">
           <button class="create-group-button">create</button>
         </label>
       </form>
-      <div class="success-cont">
-        
+      <div class="success-cont center-text">
+        <h3 class="primary-color">Group creation successful</h3 id="success-header">
+        <p class="group-id-cont"></p>
+        <button class="go-to-group">Go to group</button>
+      </div>
+      <div class="failure-cont center-text">
+        <h3 class="danger-color">Group creation unsuccessful</h3 id="success-header">
       </div>
     </div>
   </div>
+  <div class="snack-bar">
+    
+  </div>
+  <script src="./js/create.js"></script>
 </body>
 
 </html>

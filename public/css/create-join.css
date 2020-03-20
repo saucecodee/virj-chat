@@ -58,3 +58,33 @@
 }
 
 
+.success-cont {
+  display: none;
+}
+.failure-cont {
+  display: none;
+}
+.go-to-group {
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+  cursor: pointer;
+  color: white;
+  margin-bottom: 1rem;
+}
+.go-to-group:hover {
+  background-color: var(--primary-invert);
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.snack-bar {
+  background-color: rgba(0, 0, 0, 0.678);
+  color: white;
+  position: absolute;
+  top: 90%;
+  padding: 0.5rem;
+  left: 43%;
+  display: none;
+}

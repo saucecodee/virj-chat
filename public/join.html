@@ -16,18 +16,27 @@
       <form class="create-form" action="">
         <label for="group-code">
           <p>Enter a the group code</p>
-          <input placeholder="e.g 0403s4" type="text" name="group-code" id="">
+          <input required placeholder="e.g 0403s4" type="text" name="group-code" id="">
         </label>
         <label for="username">
           <p>Enter a username</p>
-          <input placeholder="e.g JohnHolt" type="text" name="username" id="">
+          <input required placeholder="e.g JohnHolt" type="text" name="username" id="">
         </label>
         <label id="button-cont" for="">
           <button class="create-group-button">join</button>
         </label>
       </form>
+
+      <div class="failure-cont center-text">
+        <h3 class="danger-color">Group ID doesn't exist</h3 >
+      </div>
+
     </div>
   </div>
+  <div class="snack-bar">
+    
+  </div>
+  <script src="./js/join.js"></script>
 </body>
 
 </html>
