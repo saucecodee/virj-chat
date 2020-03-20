@@ -7,20 +7,24 @@ function snack(text) {
   const timed = setTimeout(() => $('.snack-bar').style.display = "none", 2000);
 }
 
-
 $('.create-village-button').onclick = e => {
   e.preventDefault();
   const val1 = $('.create-form')['username'].value.trim();
-  const val2 = $('.create-form')['group-code'].value.trim();
-
+  const val2 = $('.create-form')['village-id'].value.trim();
 
   if (val1.length > 0 && val2.length > 0) {
     // Check for server responce
-    if (true) {
-      // navigate to that group
+    $('.loader-cont').style.display = "block";
+
+    let village_creation_status = $('#village-creation-status-control').checked;
+
+    if (!village_creation_status){
+      $('.failure-cont').style.display = "block";
+      $('.loader-cont').style.display = "none";
     }
     else {
-      $('.failure-cont').style.display = "block";
+      $('.failure-cont').style.display = "none";
+      "Navigate to the required village chat"
     }
   }
   else {
