@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./css/body.css">
   <link rel="stylesheet" href="./css/create-join.css">
   <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/loader.css">
 </head>
 
 <body>
@@ -16,28 +17,38 @@
       <form class="create-form" action="">
         <label for="username">
           <p>Enter a username</p>
-          <input required placeholder="JohnHolt" type="text" name="username" id="">
+          <input autofocus required placeholder="JohnHolt" type="text" name="username" id="">
         </label>
         <label for="village-name">
           <p>Enter the village name</p>
           <input required placeholder="JohnHolt" type="text" name="village-name" id="">
         </label>
+        <label id="village-creation-status-control-cont" for="village-creation-status-control">
+          <p>Should Village creation be successful</p>
+          <input type="checkbox" id="village-creation-status-control" name="village-creation-status-control">
+        </label>
         <label id="button-cont" for="">
           <button class="create-village-button">create</button>
         </label>
       </form>
-      <div class="success-cont center-text">
-        <h3 class="primary-color">Village creation successful</h3 id="success-header">
-        <p class="village-id-cont"></p>
-        <button class="go-to-village">Go to village</button>
+      <div class="loader-cont">
+        <div class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
+      
+
+
       <div class="failure-cont center-text">
         <h3 class="danger-color">Village creation unsuccessful</h3 id="success-header">
       </div>
     </div>
   </div>
   <div class="snack-bar">
-    
+
   </div>
   <script src="./js/create.js"></script>
 </body>

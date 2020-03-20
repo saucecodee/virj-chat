@@ -1,29 +1,33 @@
 const $ = n => document.querySelector(n);
 
-function snack(text){
+function snack(text) {
   $('.snack-bar').style.display = "block";
   $('.snack-bar').textContent = text;
 
-  const timed = setTimeout(()=> $('.snack-bar').style.display = "none", 2000);
+  const timed = setTimeout(() => $('.snack-bar').style.display = "none", 2000);
 }
 
-$('.create-group-button').onclick = e => {
+$('.create-village-button').onclick = e => {
   e.preventDefault();
-  const val = $('.create-form')['username'].value.trim();
+  const val1 = $('.create-form')['username'].value.trim();
+  const val2 = $('.create-form')['village-name'].value.trim();
 
-  if (val.length > 0) {
+  if (val1.length > 0 && val2.length > 0) {
     // Check for server responce
-    if (true) {
-      // dummy group id
-      const groupID = "dihf4"
-      $('.success-cont').style.display = "block";
-      $('.group-id-cont').textContent = `Your group id is ${groupID}`;
+    $('.loader-cont').style.display = "block";
+
+    let village_creation_status = $('#village-creation-status-control').checked;
+
+    if (!village_creation_status){
+      $('.failure-cont').style.display = "block";
+      $('.loader-cont').style.display = "none";
     }
     else {
-      $('.failure-cont').style.display = "block";
+      $('.failure-cont').style.display = "none";
+      "Navigate to the required village chat"
     }
   }
   else {
-    snack("Please write a username")
+    snack("Please fill the form")
   }
 }

@@ -8,7 +8,7 @@ function snack(text) {
 }
 
 
-$('.create-group-button').onclick = e => {
+$('.create-village-button').onclick = e => {
   e.preventDefault();
   const val1 = $('.create-form')['username'].value.trim();
   const val2 = $('.create-form')['group-code'].value.trim();
