@@ -76,6 +76,10 @@ body {
   position: relative;
 }
 
+.message p {
+  margin: .5rem 0
+}
+
 .message.sent {
   align-self: flex-end;
 }
@@ -114,14 +118,14 @@ body {
 
 .container > #members{
   display: none;
-  position: absolute;
+  position: fixed;
   top: 88px;
   right: 0px;
   height: 650px;
   width: 350px;
   background-color: rgba(255, 255, 255, 0.945);
   padding: 20px;
-  animation: slideIn 0.3s forwards;
+  animation: slideIn 0.3s ease-in;
 }
 
 .container > #members > ul{
@@ -138,7 +142,7 @@ body {
 
 form {
   position: fixed;
-  bottom: 1.5rem;
+  bottom: 3rem;
 }
 
 form button {
@@ -150,7 +154,7 @@ form input {
   padding: .5rem;
 }
 
-/* .container > #members > ul > li:nth-child(odd){
+.container > #members > ul > li:nth-child(odd){
   background-color: gray;
   color: white;
 }
@@ -158,7 +162,7 @@ form input {
 .container > #members > ul > li:nth-child(even){
   background-color: white;
   color: gray;
-} */
+}
 
 #membersHeader{
   /* border: 2px solid green; */
@@ -188,5 +192,7 @@ form input {
 
 @keyframes slideOut {
   0% { right: 0px;}
-  100% { right: -100%;}
+  100% { 
+    transform: translateX(100%);
+  }
 }
