@@ -1,93 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="css/body.css">
-     <link rel="stylesheet" href="css/main.css">
-     <link rel="stylesheet" href="css/chat.css">
-     <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/body.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <style>
 
-     </style>
-     <title>Express Launch Box</title>
+  </style>
+  <title>Express Launch Box</title>
 </head>
-<body id="chat"  onload="scrollToBottom()">
-     <h1> <i>#VIRJ chat</i>😋</h1>
 
-     <div class="container">
-        <div class="chat-header">
-          <h3>Group Name - #G-12982</h3>
-          <div id="left">
-            <span><a href="exit.html">Leave</a></span>
-            <span><a href="#" id="checkMembers" onclick="showMembers()">Members</a></span>
+<body id="chat" onload="scrollToBottom()">
+  <h1> <i>#VIRJ chat</i>😋</h1>
+
+  <div class="container">
+    <div class="chat-header">
+      <h3>Group Name - #G-12982</h3>
+      <div id="left">
+        <span><a href="exit.html">Leave</a></span>
+        <span><a href="#" id="checkMembers" onclick="showMembers()">Members</a></span>
+      </div>
+
+    </div>
+
+    <div class="chat-area">
+
+      <p style="text-align: center; color: #636161;"> Today</p>
+      <div class="alert">
+        <p>Welcome to the group chat vince{}</p>
+      </div>
+      <div id="messages">
+        <div class="message">
+          <div class="arrow"></div>
+          <div class="sent-by">
+            <h4>josh</h4>
           </div>
-          
+          <p>hello Guys Thanks for having me in the virj chat </p>
+          <div class="sent-time">3:30pm </div>
         </div>
 
-        <div class="chat-area">
-
-        <p style="text-align: center; color: #636161;"> Today</p>
-        <div class="alert">
-          <p>Welcome to the group chat vince{}</p>
-        </div>
-        <div id="messages">
-          <div class="message">
-            <div class="arrow"></div>
-            <div class="sent-by"><h4>josh</h4></div>
-            <p>hello Guys Thanks for having me in the virj chat </p>
-            <div class="sent-time">3:30pm </div>
+        <div class="message">
+          <div class="arrow"></div>
+          <div class="sent-by">
+            <h4>saucecode</h4>
           </div>
-
-          <div class="message">
-            <div class="arrow"></div>
-            <div class="sent-by"><h4>saucecode</h4></div>
-            <p>hello Guys Thanks for having me in the virj chat </p>
-            <div class="sent-time">3:30pm </div>
-          </div>
-
-          <div class="message sent">
-            <div class="arrow"></div>
-            <div class="sent-by"><h4>vince{}</h4></div>
-            <p>hello Guys Thanks for having me in the virj chat </p>
-            <div class="sent-time">3:30pm </div>
-          </div>
-
-
-          <div class="message">
-            <div class="arrow"></div>
-            <div class="sent-by"><h4>Raph (game engine)</h4></div>
-            <p>hello Guys Thanks for having me in the virj chat </p>
-            <div class="sent-time">3:30pm </div>
-          </div>
-
-          <div class="message sent">
-            <div class="arrow"></div>
-            <div class="sent-by"><h4>vince{}</h4></div>
-            <p>hello Guys Thanks for having me in the virj chat </p>
-            <div class="sent-time">3:30pm </div>
-          </div>
+          <p>hello Guys Thanks for having me in the virj chat </p>
+          <div class="sent-time">3:30pm </div>
         </div>
 
+        <div class="message sent">
+          <div class="arrow"></div>
+          <div class="sent-by">
+            <h4>vince{}</h4>
+          </div>
+          <p>hello Guys Thanks for having me in the virj chat </p>
+          <div class="sent-time">3:30pm </div>
         </div>
 
-        <form action="" id="message-form">
-          <input type="text" name="message" id="message" size="90">
-          <button id="btn-submit"><img src="./assets/plane.svg" alt="" width="20px"></button>
-        </form>
-        <div id="members">
-          <div id="membersHeader">
-            <h4>Your Village People</h4>
-            <h3 onclick="hideMembers()">X</h3>
+
+        <div class="message">
+          <div class="arrow"></div>
+          <div class="sent-by">
+            <h4>Raph (game engine)</h4>
           </div>
-          <ul>
-            <li>DarkCode</li>
-            <li>March</li>
-            <li>Vince</li>
-            <li>Game Engine</li>
-            <li>SauceCode</li>
-          </ul>
+          <p>hello Guys Thanks for having me in the virj chat </p>
+          <div class="sent-time">3:30pm </div>
         </div>
-     </div>
+
+        <div class="message sent">
+          <div class="arrow"></div>
+          <div class="sent-by">
+            <h4>vince{}</h4>
+          </div>
+          <p>hello Guys Thanks for having me in the virj chat </p>
+          <div class="sent-time">3:30pm </div>
+        </div>
+      </div>
+
+    </div>
+
+    <form action="" id="message-form">
+      <input type="text" name="message" id="message" size="90">
+      <button id="btn-submit"><img src="./assets/plane.svg" alt="" width="20px"></button>
+    </form>
+    <div id="members">
+      <div id="membersHeader">
+        <h4>Your Village People</h4>
+        <h3 onclick="hideMembers()">X</h3>
+      </div>
+      <ul>
+        <li>DarkCode</li>
+        <li>March</li>
+        <li>Vince</li>
+        <li>Game Engine</li>
+        <li>SauceCode</li>
+      </ul>
+    </div>
+  </div>
 </body>
 <script src="./js/chat.js"></script>
 
@@ -112,7 +124,7 @@
             <div class="arrow"></div>
             <div class="sent-by"><h4>vince{}</h4></div>
             <p> ${content} </p>
-            <div class="sent-time">${d.getHours()}:${d.getMinutes()}${d.getHours() >= 12 ? 'pm' : 'am' } </div>
+            <div class="sent-time">${d.getHours()}:${d.getMinutes()}${d.getHours() >= 12 ? 'pm' : 'am'} </div>
   
     `;
     div.innerHTML = message;
@@ -120,8 +132,9 @@
     div.scrollIntoView();
   }
 
-  function scrollToBottom() {    
+  function scrollToBottom() {
     messages.lastElementChild.scrollIntoView()
   }
 </script>
+
 </html>
