@@ -18,13 +18,14 @@ $('.create-village-button').onclick = e => {
 
     let village_creation_status = $('#village-creation-status-control').checked;
 
-    if (!village_creation_status){
+    if (!village_creation_status) {
       $('.failure-cont').style.display = "block";
       $('.loader-cont').style.display = "none";
     }
     else {
       $('.failure-cont').style.display = "none";
       "Navigate to the required village chat"
+      $('.create-village-button').style.display = "none";
     }
   }
   else {

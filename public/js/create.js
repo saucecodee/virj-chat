@@ -25,6 +25,7 @@ $('.create-village-button').onclick = e => {
     else {
       $('.failure-cont').style.display = "none";
       "Navigate to the required village chat"
+      $('.create-village-button').style.display = "none";
     }
   }
   else {
