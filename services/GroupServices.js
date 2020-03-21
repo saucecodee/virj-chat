@@ -3,6 +3,7 @@ const CustomError = require("../helpers/CustomError");
 const userService = require("../services/UserServices");
 
 class UsersService {
+
   constructor() {
     this.createUser = this.createUser.bind(this);
     this.createGroup = this.createGroup.bind(this);
@@ -10,20 +11,31 @@ class UsersService {
     this.joinGroup = this.joinGroup.bind(this);
   }
 
-  async createGroup(data) {
-    let user = await this.createUser(data.username);
+  /**
+   * 
+   * @param {*} body body of the request
+   * @description
+   * Create user
+   * generate group code
+   * create group
+   * save group
+   * send response data
+   */
+
+  async createGroup(body) {
+    let user = await this.createUser(body.username);
 
     let groupCode = await this.generateGroupCode();
 
     let group = new Group({
       creator: user._id,
-      name: data.groupName,
+      name: body.groupName,
       code: groupCode,
       members: [user._id]
-    })
+    });
 
     let g = await group.save();
-    
+
     const data = {
       userId: user._id,
       groupId: g._id,
@@ -31,23 +43,27 @@ class UsersService {
       code: g.code
     };
 
-    console.log(data);
-    
     return data
   }
 
-  async joinGroup(data) {
-    //check if group code exists
-    const group = await Group.findOne({ code: data.code });
+  /**
+   * 
+   * @param {*} body body of the request
+   * @description
+   * check if group code exists
+   * check if memeber name already exits in group
+   * create user
+   * add user to group to memebers array
+   * 
+   */
+
+  async joinGroup(body) {
+    const group = await Group.findOne({ code: body.code });
 
     if (!group) throw new CustomError("group dosen't exist", 404)
-    
-    //check if memeber name already exits in group
-    
-    //create user
-    let user = await this.createUser(data.username)
 
-    //add user to group to memebers array
+    let user = await this.createUser(body.username)
+
     group.members.push(user._id)
 
     let g = await group.save();
@@ -58,50 +74,73 @@ class UsersService {
       code: g.code,
     };
 
-    return data 
+    return data
   }
 
-  async leaveGroup(data) {
-    //check if user exist in members array
-    const group = await Group.findOne({ _id: data.groupId });
-    let index = group.members.indexOf(data.userId)
+  /**
+   * 
+   * @param {*} body body of the request
+   * @description
+   * Check it user exists in memeber array
+   * Remove user id from member array
+   */
 
-    //remove id from array of memebers
-    if(index > -1) group.members.splice(index, 1)
+  async leaveGroup(body) {
+    const group = await Group.findOne({ _id: body.groupId });
+    let index = group.members.indexOf(body.userId)
 
-    let g = await group.save();
+    if (index > -1) group.members.splice(index, 1)
 
-    const dat = null
-  
-    return dat
+    await group.save();
+
+    return null
   }
 
-  async deleteGroup(groupId) {
-    return await Group.findOneAndRemove({ _id: groupId });
+  /**
+   * 
+   * @param {*} groupId group Id to be deleted
+   * @param {*} body body of the request
+   * @description
+   * Check if group exists
+   * Check if userId is the creator
+   * Delete group
+   */
+
+  async deleteGroup(groupId, body) {
+    console.log(groupId, body)
+    let group = await Group.findOne({ _id: groupId });
+
+    if (group.creator !== body.userId) return new CustomError("unauthorized user", 405)
+
+    let g = await Group.findOneAndRemove({ _id: groupId });
+
+    if(!g) return new CustomError("group not found", 404)
+    
+
+    return null
   }
 
 
 
-  async generateGroupCode(userId) {
-    //generate 6 code
+  /**
+   * 
+   * @description
+   * generate 6 digit code
+   * check if code already exists
+   */
+
+  async generateGroupCode() {
     var chars = 'acdefhiklmnoqrstuvwxyz0123456789ABCDEFGHIJKLMNOP'.split('');
-    var result = '';
+    var data = '';
     for (var i = 0; i < 6; i++) {
       var x = Math.floor(Math.random() * chars.length);
-      result += chars[x];
-    } 
-    //check if code exhist else generate again
-    return result;
-  }
+      data += chars[x];
+    }
 
+    return data;
+  }
 
   async checkIfUserExist(userId) {
-    const group = await Group.findOne({ _id: groupId });
-
-    return group;
-  }
-
-  async getGroup(groupId) {
     const group = await Group.findOne({ _id: groupId });
 
     return group;

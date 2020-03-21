@@ -3,7 +3,7 @@ const {
   joinGroup,
   leaveGroup,
   deleteGroup,
-} = require("../services/groupservices");
+} = require("../services/GroupServices");
 
 const { response } = require("../helpers/messages");
 const CustomError = require('../helpers/CustomError')
@@ -20,13 +20,13 @@ class GroupContoller {
   }
 
   async leaveGroup(req, res) {
-    const dat = await leaveGroup(req.body);
-    res.status(200).send(response("group left", dat));
+    const data = await leaveGroup(req.params.groupId);
+    res.status(200).send(response("group left", data));
   }
-
+  
   async deleteGroup(req, res) {
-    const group = await deleteGroup(req.params.groupId);
-    res.status(200).send(response("group deleted", group));
+    const data = await deleteGroup(req.params.groupId, req.body);
+    res.status(200).send(response("group deleted", data));
   }
 }
 
