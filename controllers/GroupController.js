@@ -3,6 +3,7 @@ const {
   joinGroup,
   leaveGroup,
   deleteGroup,
+  getMembers
 } = require("../services/GroupServices");
 
 const { response } = require("../helpers/Messages");
@@ -27,6 +28,11 @@ class GroupContoller {
   async deleteGroup(req, res) {
     const data = await deleteGroup(req.params.groupId, req.body);
     res.status(200).send(response("group deleted", data));
+  }
+
+  async getMembers(req, res) {
+    const data = await getMembers(req.params.groupId);
+    res.status(200).send(response("group members", data));
   }
 }
 

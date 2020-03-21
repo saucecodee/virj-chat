@@ -109,17 +109,34 @@ class UsersService {
   async deleteGroup(groupId, body) {
     let group = await Group.findOne({ _id: groupId });
 
-    console.log(group.creator == body.userId);
-    
-
     if (group.creator != body.userId) throw new CustomError("unauthorized user", 405)
 
     let g = await Group.findOneAndRemove({ _id: groupId });
 
     if(!g) throw new CustomError("group not found", 404)
     
-
     return null
+  }
+
+  /**
+   * 
+   * @param {*} groupId group Id to be deleted
+   * @description
+   * Check if group exists
+   * get the username of members
+   */
+
+  async getMembers(groupId) {
+    const group = await Group.findOne({ _id: groupId });
+
+    if (!group) throw new CustomError("group dosen't exist", 404)
+
+    let data = group.members.map(m => {
+      let username = await userService.getUser(m)
+      return username
+    })
+
+    return data
   }
 
 
