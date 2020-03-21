@@ -1,6 +1,6 @@
 const Group = require("../models/Group");
 const CustomError = require("../helpers/CustomError");
-const userService = require("../services/UserServices");
+const userService = require("./UserService");
 
 class UsersService {
 

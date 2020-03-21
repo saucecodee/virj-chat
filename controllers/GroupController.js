@@ -4,7 +4,7 @@ const {
   leaveGroup,
   deleteGroup,
   getMembers
-} = require("../services/GroupServices");
+} = require("../services/GroupService");
 
 const { response } = require("../helpers/Message");
 const CustomError = require('../helpers/CustomError')
