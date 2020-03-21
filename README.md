@@ -53,7 +53,7 @@ You can deploy the project to heroku
 ## Authors
 
 * **Ifedili** - *Initial work* - [saucecode](https://github.com/saucecodee)
-* **Edeh Vincent** - *Initial work* - [vince](https://github.com/saucecodee)
+* **Edeh Vincent** - *Initial work* - [vince](https://github.com/vinuch)
 * **Chukwujama Osinachi** - *Initial work* - [vicradon](https://github.com/vicradon)
 * **Nwakor Joshua** - *Initial work* - [Josh](https://github.com/joshuanwakor)
 

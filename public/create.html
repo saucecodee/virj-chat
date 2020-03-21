@@ -7,26 +7,48 @@
   <link rel="stylesheet" href="./css/body.css">
   <link rel="stylesheet" href="./css/create-join.css">
   <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/loader.css">
 </head>
 
 <body>
   <div class="container">
     <div class="create">
-      <h1 class="create-group">Create Group</h1>
+      <h1 class="create-village">Create Village</h1>
       <form class="create-form" action="">
         <label for="username">
           <p>Enter a username</p>
-          <input placeholder="JohnHolt" type="text" name="username" id="">
+          <input autofocus required placeholder="JohnHolt" type="text" name="username" id="">
+        </label>
+        <label for="village-name">
+          <p>Enter the village name</p>
+          <input required placeholder="JohnHolt" type="text" name="village-name" id="">
+        </label>
+        <label id="village-creation-status-control-cont" for="village-creation-status-control">
+          <p>Should Village creation be successful</p>
+          <input type="checkbox" id="village-creation-status-control" name="village-creation-status-control">
         </label>
         <label id="button-cont" for="">
-          <button class="create-group-button">create</button>
+          <button class="create-village-button">create</button>
         </label>
       </form>
-      <div class="success-cont">
-        
+      <div class="loader-cont">
+        <div class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      
+      <div class="failure-cont center-text">
+        <h3 class="danger-color">Village creation unsuccessful</h3 id="success-header">
       </div>
     </div>
   </div>
+  <div class="snack-bar">
+
+  </div>
+  <script src="./js/create.js"></script>
 </body>
 
 </html>
