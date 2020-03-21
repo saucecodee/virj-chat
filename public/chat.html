@@ -7,15 +7,11 @@
   <link rel="stylesheet" href="css/body.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/chat.css">
-  <style>
-
-  </style>
   <title>Express Launch Box</title>
 </head>
 
 <body id="chat" onload="scrollToBottom()">
   <h1> <i>#VIRJ chat</i>😋</h1>
-
   <div class="container">
     <div class="chat-header">
       <h3>Group Name - #G-12982</h3>
@@ -50,6 +46,8 @@
           <p>hello Guys Thanks for having me in the virj chat </p>
           <div class="sent-time">3:30pm </div>
         </div>
+
+
 
         <div class="message sent">
           <div class="arrow"></div>
@@ -102,39 +100,5 @@
   </div>
 </body>
 <script src="./js/chat.js"></script>
-
-<script>
-  let messageInput = document.querySelector('#message')
-  let btnSubmit = document.querySelector('#btn-submit')
-  let messages = document.querySelector('#messages')
-
-  btnSubmit.addEventListener('click', (e) => {
-    e.preventDefault();
-    console.log(messageInput.value);
-    sendMessage(messageInput.value)
-    messageInput.value = ''
-  })
-
-  function sendMessage(text) {
-    let content = text;
-    let d = new Date();
-    let div = document.createElement('div')
-    div.classList.add('message', 'sent')
-    let message = `
-            <div class="arrow"></div>
-            <div class="sent-by"><h4>vince{}</h4></div>
-            <p> ${content} </p>
-            <div class="sent-time">${d.getHours()}:${d.getMinutes()}${d.getHours() >= 12 ? 'pm' : 'am'} </div>
-  
-    `;
-    div.innerHTML = message;
-    messages.appendChild(div);
-    div.scrollIntoView();
-  }
-
-  function scrollToBottom() {
-    messages.lastElementChild.scrollIntoView()
-  }
-</script>
-
+<script src="villagePeople.json"></script>
 </html>
