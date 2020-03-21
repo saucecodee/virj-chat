@@ -131,7 +131,7 @@ class UsersService {
 
     if (!group) throw new CustomError("group dosen't exist", 404)
 
-    let data = group.members.map(m => {
+    let data = group.members.map(async (m) => {
       let username = await userService.getUser(m)
       return username
     })
