@@ -8,6 +8,12 @@ class UserService {
     return userData;
   }
 
+  async getUser(id) {
+    const user = User.findById(id);
+
+    return user.username;
+  }
+
   async deleteUser(userId) {
     return await User.findOneAndRemove({ _id: userId });
   }

@@ -4,16 +4,7 @@ const groupRoute = require("./groupRoute");
 module.exports = function (server) {
   const io = require('socket.io')(server);
 
-
-  router.get("/test", (req, res) => {
-    res.send("yehh!==========================");
-  });
-
-
-
-  
   router.use("/groups", groupRoute());
-
 
   io.on('connection', (socket) => {
 
