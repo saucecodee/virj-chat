@@ -6,7 +6,7 @@ const {
   getMembers
 } = require("../services/GroupServices");
 
-const { response } = require("../helpers/Messages");
+const { response } = require("../helpers/Message");
 const CustomError = require('../helpers/CustomError')
 
 class GroupContoller {

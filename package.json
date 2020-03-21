@@ -1,5 +1,5 @@
 {
-  "name": "Virj-Chat",
+  "name": "virj-chat",
   "version": "1.0.0",
   "description": "Your village people can chat here",
   "main": "server.js",
@@ -7,9 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",

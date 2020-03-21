@@ -1,9 +1,7 @@
 const CustomError = require("../helpers/CustomError");
-const { response } = require("../helpers/Messages")
+const { response } = require("../helpers/Message")
 
 module.exports = (error, req, res, next) => {
-     console.log(error)
-
      if (error instanceof CustomError) {
           res.status(error.status).send(response(error.message, null, false));
      } else if (error.name == "CastError") {
