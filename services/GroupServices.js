@@ -7,6 +7,7 @@ class UsersService {
     this.createUser = this.createUser.bind(this);
     this.createGroup = this.createGroup.bind(this);
     this.generateGroupCode = this.generateGroupCode.bind(this);
+    this.joinGroup = this.joinGroup.bind(this);
   }
 
   async createGroup(data) {
@@ -25,30 +26,42 @@ class UsersService {
     });
 
     let g = await group.save();
-
-    console.log(g);
-
-    return {
+    
+    const res = {
+      userId: user._id,
       groupId: g._id,
       creator: g.creator,
       code: g.code
     };
+
+    console.log(res);
+    
+    return res
   }
 
   async joinGroup(data) {
     //check if group code exists
-    let user = this.createUser(data.username)
-
-    //check if memeber name already exits in group
     const group = await Group.findOne({ code: data.code });
 
+    if (!group) throw new CustomError("group dosen't exist", 404)
+    
+    //check if memeber name already exits in group
+    
+    //create user
+    let user = await this.createUser(data.username)
+
     //add user to group to memebers array
-    group.memebers.push(user._id)
-    await group.save();
-    return {
-      groupId: _id,
-      code: group.code
+    group.members.push(user._id)
+
+    let g = await group.save();
+
+    const res = {
+      userId: user._id,
+      groupId: g._id,
+      code: g.code,
     };
+
+    return res 
   }
 
   async leaveGroup() {
