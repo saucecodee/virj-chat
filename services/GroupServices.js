@@ -11,32 +11,29 @@ class UsersService {
   }
 
   async createGroup(data) {
-    //create user
-    let user = await this.createUser(data.username)
+    let user = await this.createUser(data.username);
 
-    //get group code
-    let groupCode = await this.generateGroupCode()
+    let groupCode = await this.generateGroupCode();
 
-    //create group
-    const group = new Group({
+    let group = new Group({
       creator: user._id,
       name: data.groupName,
       code: groupCode,
       members: [user._id]
-    });
+    })
 
     let g = await group.save();
     
-    const res = {
+    const data = {
       userId: user._id,
       groupId: g._id,
       creator: g.creator,
       code: g.code
     };
 
-    console.log(res);
+    console.log(data);
     
-    return res
+    return data
   }
 
   async joinGroup(data) {
@@ -55,20 +52,28 @@ class UsersService {
 
     let g = await group.save();
 
-    const res = {
+    const data = {
       userId: user._id,
       groupId: g._id,
       code: g.code,
     };
 
-    return res 
+    return data 
   }
 
-  async leaveGroup() {
+  async leaveGroup(data) {
     //check if user exist in members array
+    const group = await Group.findOne({ _id: data.groupId });
+    let index = group.members.indexOf(data.userId)
+
     //remove id from array of memebers
-    //
-    return await Group.find({});
+    if(index > -1) group.members.splice(index, 1)
+
+    let g = await group.save();
+
+    const dat = null
+  
+    return dat
   }
 
   async deleteGroup(groupId) {
