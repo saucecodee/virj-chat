@@ -1,7 +1,7 @@
 {
-  "name": "express-launch-box",
+  "name": "Virj-Chat",
   "version": "1.0.0",
-  "description": "A boilerplate for creating an Express server",
+  "description": "Your village people can chat here",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
