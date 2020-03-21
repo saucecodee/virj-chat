@@ -1,6 +1,7 @@
 let messageInput = document.querySelector('#message')
 let btnSubmit = document.querySelector('#btn-submit')
 let messages = document.querySelector('#messages')
+let memberContainer = document.querySelector('#listContainer');
 
 btnSubmit.addEventListener('click', (e) => {
   e.preventDefault();
@@ -44,11 +45,20 @@ function hideMembers(){
 membersbtn.addEventListener('click', updateMembers);
 
 function updateMembers(){
-    fetch('villagePeople.json')
-    .then((res) => res.text())
+    fetch('js/villagePeople.json')
+    .then((res) => res.json())
     .then((data) => {
-        console.log(data);
+        let output = ``;
+        data.forEach(user => {
+          output += `
+              <li>
+                ${user.name}
+              </li>
+          `
+        })
         
+        memberContainer.innerHTML = output;
+      
     })
 }
 
