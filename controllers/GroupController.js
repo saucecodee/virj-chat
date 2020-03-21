@@ -5,7 +5,7 @@ const {
   deleteGroup,
 } = require("../services/GroupServices");
 
-const { response } = require("../helpers/messages");
+const { response } = require("../helpers/Messages");
 const CustomError = require('../helpers/CustomError')
 
 class GroupContoller {

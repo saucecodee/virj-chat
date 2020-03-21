@@ -1,11 +1,12 @@
 class Message {
+  
   response(message, data, success) {
     return {
       message: message || null,
       data: data || null,
-      success: success == null ? true : success,
+      success: success || false
     };
   }
 }
 
-module.exports = new Message();
+module.exports = new Message()

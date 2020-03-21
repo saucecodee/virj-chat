@@ -1,4 +1,4 @@
-// require('express-async-errors')
+require('express-async-errors')
 const CustomError = require("./helpers/CustomError");
 const path = require("path")
 const http = require('http');
