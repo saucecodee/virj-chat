@@ -15,7 +15,6 @@ $('.join-village-button').onclick = e => {
   const val2 = $('.create-form')['village-id'].value.trim();
 
   if (val1.length > 0 && val2.length > 0) {
-    // Check for server responce
     $('.loader-cont').style.display = "block";
 
     let village_creation_status = $('#village-creation-status-control').checked;
@@ -62,7 +61,6 @@ function joinGroup(e) {
         window.location.href = 'chat.html';
       }
       console.log(result);
-      // localStorage.setItem(data, result)
       $('.failure-cont').innerHTML = `<h3 id="success">${result.message}</h3>`;
       $('.failure-cont').style.display = "flex";
       $('.loader-cont').style.display = "none";
