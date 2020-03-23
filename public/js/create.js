@@ -18,7 +18,7 @@ $('.create-village-button').onclick = e => {
 
     let village_creation_status = $('#village-creation-status-control').checked;
 
-    if (!village_creation_status){
+    if (!village_creation_status) {
       $('.failure-cont').style.display = "block";
       $('.loader-cont').style.display = "none";
     }
@@ -35,31 +35,37 @@ $('.create-village-button').onclick = e => {
 
 document.getElementById('createGroup').addEventListener('click', createGroup)
 
-function createGroup(e){
+function createGroup(e) {
   e.preventDefault();
 
-let groupName = document.getElementById('VillageName').value;
+  let groupName = document.getElementById('VillageName').value;
+  let userName = document.getElementById('username').value;
 
-let userName = document.getElementById('username').value;
+  var headers = new Headers()
+  headers.append("Content-Type", "application/json");
+  var raw = JSON.stringify({ groupName: groupName, username: userName });
+  var requestOptions = {
+    method: 'POST',
+    headers: headers,
+    body: raw,
+    redirect: 'follow'
+  };
 
-var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+  let currentHost = window.location.host;
 
-var raw = JSON.stringify({groupName:groupName, username:userName});
+  fetch("https://virj-chat.herokuapp.com/api/groups", requestOptions)
+    .then(response => response.json())
+    .then(result => {
+      if (result.data.code) {
+        localStorage.setItem('data', JSON.stringify(result.data));
+        window.location.href = 'chat.html';
+        console.log(result.data.code);
+        
+      };
+      $('.failure-cont').textContent = result.data.code + " is your tribal mark";
+      console.log(result.data.code);
 
-var requestOptions = {
-method: 'POST',
-headers: myHeaders,
-body: raw,
-redirect: 'follow'
-};
-
-fetch("https://virj-chat.herokuapp.com/api/groups", requestOptions)
-.then(response => response.json())
-.then(result => {
-  $('.failure-cont').textContent = result.data.code + " is your tribal mark";
-  console.log(result.data.code);
-  
-})
-.catch(error => console.log('error', error));
+    })
+    .catch(error => console.log('error', error));
 }
+

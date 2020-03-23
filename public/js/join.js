@@ -27,7 +27,7 @@ $('.join-village-button').onclick = e => {
     else {
       $('.failure-cont').style.display = "none";
       "Navigate to the required village chat"
-      $('.create-village-button').style.display = "none";
+      $('.join-village-button').style.display = "none";
     }
   }
   else {
@@ -35,7 +35,7 @@ $('.join-village-button').onclick = e => {
   }
 }
 
-function joinGroup(e){
+function joinGroup(e) {
   e.preventDefault();
 
   let code = document.getElementById('villageId').value;
@@ -44,48 +44,30 @@ function joinGroup(e){
 
 
   var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
-
-var raw = JSON.stringify({"code": code ,"username": userName});
-
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
-};
-
-fetch("https://virj-chat.herokuapp.com/api/groups/join", requestOptions)
-  .then(response => response.json())
-  .then(result => {
-    console.log(result);
-    $('.failure-cont').innerHTML = `<h3 id="success">${result.message}</h3>`;
-    $('.failure-cont').style.display = "flex";
-    $('.loader-cont').style.display = "none";
-    
-    console.log(result.message);
-  })
-  .catch(error => console.log('error', error));
-
-function addUser(){
-  var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
-  
-  var raw = JSON.stringify({"code":"kAvrk0","username":"Ikem"});
-  
+
+  var raw = JSON.stringify({ "code": code, "username": userName });
+
   var requestOptions = {
     method: 'POST',
     headers: myHeaders,
     body: raw,
     redirect: 'follow'
   };
-  
-  fetch("https://virj-chat.herokuapp.com/api/groups", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
+
+  fetch("https://virj-chat.herokuapp.com/api/groups/join", requestOptions)
+    .then(response => response.json())
+    .then(result => {
+      if(result.message == 'group joined'){
+        window.location.href = 'chat.html';
+      }
+      console.log(result);
+      // localStorage.setItem(data, result)
+      $('.failure-cont').innerHTML = `<h3 id="success">${result.message}</h3>`;
+      $('.failure-cont').style.display = "flex";
+      $('.loader-cont').style.display = "none";
+
+      console.log(result.message);
+    })
     .catch(error => console.log('error', error));
-}
-
-addUser();
-
 }
