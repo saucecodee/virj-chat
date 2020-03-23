@@ -17,7 +17,7 @@ function sendMessage(text) {
   div.classList.add('message', 'sent')
   let message = `
           <div class="arrow"></div>
-          <div class="sent-by"></h4>vince{}</div>
+          <div class="sent-by"><h4>vince{}</h4></div>
           <p> ${content} </p>
           <div class="sent-time">${d.getHours()}:${d.getMinutes()}${d.getHours() >= 12 ? 'pm' : 'am'} </div>
 
@@ -43,6 +43,7 @@ function hideMembers(){
 }
 
 membersbtn.addEventListener('click', updateMembers);
+
 
 function updateMembers(){
     fetch('js/villagePeople.json')

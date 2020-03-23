@@ -32,3 +32,34 @@ $('.create-village-button').onclick = e => {
     snack("Please fill the form")
   }
 }
+
+document.getElementById('createGroup').addEventListener('click', createGroup)
+
+function createGroup(e){
+  e.preventDefault();
+
+let groupName = document.getElementById('VillageName').value;
+
+let userName = document.getElementById('username').value;
+
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({groupName:groupName, username:userName});
+
+var requestOptions = {
+method: 'POST',
+headers: myHeaders,
+body: raw,
+redirect: 'follow'
+};
+
+fetch("https://virj-chat.herokuapp.com/api/groups", requestOptions)
+.then(response => response.json())
+.then(result => {
+  $('.failure-cont').textContent = result.data.code + " is your tribal mark";
+  console.log(result.data.code);
+  
+})
+.catch(error => console.log('error', error));
+}
