@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "ef1fd5c9-181d-4f79-b3b2-1ff2ac8df7d8",
+		"name": "Virj",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Group",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"groupName\": \"Enter group name here\",\n  \"username\": \"Enter Username here\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3030/api/groups",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Join Group",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"code\": \"Enter the group code here\",\n  \"username\": \"Enter username here\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3030/api/groups/join",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"groups",
+						"join"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Leave Group",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"groupId\": \"enter group id here\",\n\t\"userId\": \"enter user id here\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3030/api/groups/leave",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"groups",
+						"leave"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Group",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userId\": \"Enter user id here\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3030/api/groups/:groupId",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"groups",
+						":groupId"
+					],
+					"variable": [
+						{
+							"key": "groupId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Group Members",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:3030/api/groups/:groupId",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"groups",
+						":groupId"
+					],
+					"variable": [
+						{
+							"key": "groupId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
