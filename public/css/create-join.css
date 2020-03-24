@@ -64,6 +64,7 @@
 }
 .failure-cont {
   display: none;
+  justify-content: center;
 }
 .go-to-village {
   border-radius: 0.4rem;
@@ -98,4 +99,15 @@
 }
 #village-creation-status-control {
   height: 50%;
+}
+
+#success{
+  color: white;
+  background-color: rgb(78, 221, 78);
+  height: 40px;
+  width: 200px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

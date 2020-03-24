@@ -16,5 +16,15 @@
   },
   "devDependencies": {
     "nodemon": "^1.19.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saucecodee/virj-chat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saucecodee/virj-chat/issues"
+  },
+  "homepage": "https://github.com/saucecodee/virj-chat#readme"
 }
