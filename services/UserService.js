@@ -14,6 +14,12 @@ class UserService {
     return user.username;
   }
 
+  async getGroupMembers(userIdArray) {
+    const users = User.find({_id : { $in : userIdArray}}, {_id:0, username:1});
+
+    return users;
+  }
+
   async deleteUser(userId) {
     return await User.findOneAndRemove({ _id: userId });
   }

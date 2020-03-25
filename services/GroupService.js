@@ -39,7 +39,7 @@ class UsersService {
     const data = {
       userId: user._id,
       groupId: g._id,
-      creator: g.creator,
+      groupName: g.name,
       code: g.code
     };
 
@@ -71,6 +71,7 @@ class UsersService {
     const data = {
       userId: user._id,
       groupId: g._id,
+      groupName: g.name,
       code: g.code,
     };
 
@@ -131,12 +132,9 @@ class UsersService {
 
     if (!group) throw new CustomError("group dosen't exist", 404)
 
-    let data = group.members.map(async (m) => {
-      let username = await userService.getUser(m)
-      return username
-    })
+    const groupMemebers = await userService.getGroupMembers(group.members)
 
-    return data
+    return groupMemebers
   }
 
 
