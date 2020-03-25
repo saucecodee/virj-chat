@@ -3,7 +3,7 @@ class Message {
     return {
       message: message || null,
       data: data || null,
-      success: success || false
+      success: success == null ? true : success
     };
   }
 }
