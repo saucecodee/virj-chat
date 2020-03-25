@@ -56,11 +56,11 @@ function createGroup(e) {
   fetch("https://virj-chat.herokuapp.com/api/groups", requestOptions)
     .then(response => response.json())
     .then(result => {
-      if (result.data.code) {
+      if (result.success == true) {
         localStorage.setItem('data', JSON.stringify(result.data));
         window.location.href = 'chat.html';
         console.log(result.data.code);
-        
+
       };
       $('.failure-cont').textContent = result.data.code + " is your tribal mark";
       console.log(result.data.code);

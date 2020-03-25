@@ -57,7 +57,7 @@ function joinGroup(e) {
   fetch("https://virj-chat.herokuapp.com/api/groups/join", requestOptions)
     .then(response => response.json())
     .then(result => {
-      if(result.message == 'group joined'){
+      if(result.success == true){
         window.location.href = 'chat.html';
       }
       console.log(result);

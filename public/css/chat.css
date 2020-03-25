@@ -38,6 +38,7 @@ body {
   margin: 0 -1.5rem;
   position: fixed;
   border-top-right-radius: 8px;
+  padding: 10px;
 }
 
 .chat-header #left {

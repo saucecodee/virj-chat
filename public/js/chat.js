@@ -1,7 +1,21 @@
+// import { json } from "express";
+
 let messageInput = document.querySelector('#message')
 let btnSubmit = document.querySelector('#btn-submit')
 let messages = document.querySelector('#messages')
 let memberContainer = document.querySelector('#listContainer');
+
+
+
+let groupDetails = JSON.parse(localStorage.getItem('data'))
+
+console.log(groupDetails);
+
+// let currentCode = document.getElementById('groupCode').innerHTML = groupDetails.code;
+let currentCode = document.getElementById('groupName').innerHTML = `${groupDetails.groupName}  (${groupDetails.code})`;
+
+console.log(currentCode);
+
 
 btnSubmit.addEventListener('click', (e) => {
   e.preventDefault();
@@ -46,7 +60,7 @@ membersbtn.addEventListener('click', updateMembers);
 
 
 function updateMembers(){
-    fetch('js/villagePeople.json')
+    fetch('https://virj-chat.herokuapp.com/api/groups/5e7b52cd2b25d70017ed2557/members')
     .then((res) => res.json())
     .then((data) => {
         let output = ``;
