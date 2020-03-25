@@ -60,19 +60,31 @@ membersbtn.addEventListener('click', updateMembers);
 
 
 function updateMembers(){
-    fetch('https://virj-chat.herokuapp.com/api/groups/5e7b52cd2b25d70017ed2557/members')
-    .then((res) => res.json())
-    .then((data) => {
-        let output = ``;
-        data.forEach(user => {
-          output += `
-              <li>
-                ${user.name}
-              </li>
-          `
-        })
-        
-        memberContainer.innerHTML = output;
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+  
+  fetch("https://virj-chat.herokuapp.com/api/groups/5e7b52cd2b25d70017ed2557/members", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+      let output = ``;
+      JSON.parse(result).data.forEach(data => {
+        output += `
+            <li>
+              ${data.username}
+            </li>
+        `
+      })
       
-    })
+      memberContainer.innerHTML = output;
+    
+  })
+    .catch(error => console.log('error', error));
 }
+
+
