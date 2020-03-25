@@ -1,6 +1,7 @@
 let messageInput = document.querySelector('#message')
 let btnSubmit = document.querySelector('#btn-submit')
 let messages = document.querySelector('#messages')
+let memberContainer = document.querySelector('#listContainer');
 
 btnSubmit.addEventListener('click', (e) => {
   e.preventDefault();
@@ -16,7 +17,7 @@ function sendMessage(text) {
   div.classList.add('message', 'sent')
   let message = `
           <div class="arrow"></div>
-          <div class="sent-by"></h4>vince{}</div>
+          <div class="sent-by"><h4>vince{}</h4></div>
           <p> ${content} </p>
           <div class="sent-time">${d.getHours()}:${d.getMinutes()}${d.getHours() >= 12 ? 'pm' : 'am'} </div>
 
@@ -43,14 +44,21 @@ function hideMembers(){
 
 membersbtn.addEventListener('click', updateMembers);
 
+
 function updateMembers(){
-    fetch('villagePeople.json')
-    .then((res) => res.text())
+    fetch('js/villagePeople.json')
+    .then((res) => res.json())
     .then((data) => {
-        console.log(data);
+        let output = ``;
+        data.forEach(user => {
+          output += `
+              <li>
+                ${user.name}
+              </li>
+          `
+        })
         
+        memberContainer.innerHTML = output;
+      
     })
 }
-
-
-

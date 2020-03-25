@@ -55,7 +55,7 @@ You can deploy the project to heroku
 * **Ifedili** - *Initial work* - [saucecode](https://github.com/saucecodee)
 * **Edeh Vincent** - *Initial work* - [vince](https://github.com/vinuch)
 * **Chukwujama Osinachi** - *Initial work* - [vicradon](https://github.com/vicradon)
-* **Nwakor Joshua** - *Initial work* - [Josh](https://github.com/joshuanwakor)
+* **Nwankwo Joshua** - *Initial work* - [DarkCode](https://github.com/joshuanwankwo)
 
 See also the list of [contributors](https://github.com/saucecodee/virj-chat/contributors) who participated in this project.
 
