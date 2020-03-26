@@ -1,9 +1,9 @@
 // import { json } from "express";
-
-let messageInput = document.querySelector('#message')
-let btnSubmit = document.querySelector('#btn-submit')
-let messages = document.querySelector('#messages')
-let memberContainer = document.querySelector('#listContainer');
+const $ = n => document.querySelector(n);
+let messageInput = $('#message')
+let btnSubmit = $('#btn-submit')
+let messages = $('#messages')
+let memberContainer = $('#listContainer');
 
 
 
@@ -11,8 +11,8 @@ let groupDetails = JSON.parse(localStorage.getItem('data'))
 
 console.log(groupDetails);
 
-// let currentCode = document.getElementById('groupCode').innerHTML = groupDetails.code;
-let currentCode = document.getElementById('groupName').innerHTML = `${groupDetails.groupName}  (${groupDetails.code})`;
+// let currentCode = $('#groupCode').innerHTML = groupDetails.code;
+let currentCode = $('#groupName').innerHTML = `${groupDetails.groupName}  (${groupDetails.code})`;
 
 console.log(currentCode);
 
@@ -45,30 +45,30 @@ function scrollToBottom() {
   messages.lastElementChild.scrollIntoView()
 }
 
-let membersList = document.getElementById("members");
-let membersbtn = document.getElementById("checkMembers");
+let membersList = $("#members");
+let membersbtn = $("#checkMembers");
 
-function showMembers(){
-    membersList.style.display = "Block";
+function showMembers() {
+  membersList.style.display = "Block";
 }
 
-function hideMembers(){
-    membersList.style.display = "none"
+function hideMembers() {
+  membersList.style.display = "none"
 }
 
 membersbtn.addEventListener('click', updateMembers);
 
 
-function updateMembers(){
+function updateMembers() {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
-  
+
   var requestOptions = {
     method: 'GET',
     headers: myHeaders,
     redirect: 'follow'
   };
-  
+
   fetch("https://virj-chat.herokuapp.com/api/groups/5e7b52cd2b25d70017ed2557/members", requestOptions)
     .then(response => response.text())
     .then(result => {
@@ -80,10 +80,10 @@ function updateMembers(){
             </li>
         `
       })
-      
+
       memberContainer.innerHTML = output;
-    
-  })
+
+    })
     .catch(error => console.log('error', error));
 }
 

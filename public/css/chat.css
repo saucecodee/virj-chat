@@ -1,6 +1,19 @@
-body {
-  padding: 0 2rem;
+.container {
+  width: 700px;
+  
 }
+
+
+
+/* 
+1. Remove scroll from background
+2. Make the member side menu cover the member link
+3. Add better padding to the notifications
+4. Make the chat area occupy 100%
+5. Make header disapper when you scroll up
+6. Push the message input area down
+*/
+/*
 .container{
   position: relative;
   width: 700px;
@@ -195,3 +208,4 @@ form input {
     transform: translateX(100%);
   }
 }
+*/
