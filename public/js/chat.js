@@ -1,7 +1,7 @@
 // import { json } from "express";
 const $ = n => document.querySelector(n);
 let messageInput = $('#message')
-let btnSubmit = $('#btn-submit')
+let submitBtn = $('.submit-btn')
 let messages = $('#messages')
 let memberContainer = $('#listContainer');
 
@@ -12,12 +12,16 @@ let groupDetails = JSON.parse(localStorage.getItem('data'))
 console.log(groupDetails);
 
 // let currentCode = $('#groupCode').innerHTML = groupDetails.code;
-let currentCode = $('#groupName').innerHTML = `${groupDetails.groupName}  (${groupDetails.code})`;
+// let currentCode = $('#groupName').innerHTML = `${groupDetails.groupName}  (${groupDetails.code})`;
 
-console.log(currentCode);
+// console.log(currentCode);
+$('.menu').onclick = () => {
+  $('.group-actions-menu').style.display === "none"
+    ? $('.group-actions-menu').style.display = "block"
+    : $('.group-actions-menu').style.display = "none"
+}
 
-
-btnSubmit.addEventListener('click', (e) => {
+submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
   console.log(messageInput.value);
   sendMessage(messageInput.value)
@@ -46,7 +50,7 @@ function scrollToBottom() {
 }
 
 let membersList = $("#members");
-let membersbtn = $("#checkMembers");
+let membersbtn = $(".check-members");
 
 function showMembers() {
   membersList.style.display = "Block";
