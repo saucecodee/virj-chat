@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/body.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="css/modal.css">
   <title>Express Launch Box</title>
 </head>
 
@@ -16,13 +17,17 @@
       <p>Group Name</p>
       <div class="group-actions">
         <p class="leave">leave</p>
-        <p class="check-members">members</p>
+        <p onclick="showVillagers()" class="check-members">members</p>
       </div>
-      <div class="group-actions-menu">
-        <p class="leave">leave</p>
-        <p class="check-members">members</p>
+      <div class="group-actions-menu rotate-scale-up">
+        <!-- <div class="menu-spread"> -->
+          <p class="leave">leave</p>
+          <p onclick="showVillagers()" class="check-members">members</p>
+        <!-- </div> -->
+        
       </div>
       <p class="menu">menu</p>
+
     </div>
 
 
@@ -92,51 +97,30 @@
     </footer>
   </div>
 
+  <div id="village-modal-wrapper" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content scale-up-center">
+      <div class="village-members-header"> 
+        <h3>Group Members</h3>
+        <span onclick="closeVillageModal()" class="close">&times;</span>
+      </div>
 
+      <div class="members">
+        <div id="listContainer">
+          <p>DarkCode</p>
+          <p>March</p>
+          <p>Vince</p>
+          <p>Game Engine</p>
+          <p>SauceCode</p>
+        </div>
+
+      </div>
+    </div>
 
   </div>
 
+  <script src="./js/modal.js"></script>
   <script src="./js/chat.js"></script>
 </body>
-
-<!-- 
-<body id="chat" onload="scrollToBottom()">
-  <div class="container" id="11354252">
-    <div class="chat-header">
-      <h3 id="groupName">Group Name - <span id="groupCode">#G-12982</span></h3>
-      <div id="left">
-        <span><a href="exit.html">Leave</a></span>
-        <span><a href="#" id="checkMembers" onclick="showMembers()">Members</a></span>
-      </div>
-
-    </div>
-
-    <div class="chat-area">
-
-      
-      <div id="messages">
-        
-
-    </div>
-
-    <form action="" id="message-form">
-      <input type="text" name="message" id="message" size="90">
-      <button id="btn-submit"><img src="./assets/plane.svg" alt="" width="20px"></button>
-    </form>
-    <div id="members">
-      <div id="membersHeader">
-        <h4>Your Village People</h4>
-        <h3 onclick="hideMembers()">X</h3>
-      </div>
-      <ul id="listContainer">
-        <li>DarkCode</li>
-        <li>March</li>
-        <li>Vince</li>
-        <li>Game Engine</li>
-        <li>SauceCode</li>
-      </ul>
-    </div>
-  </div>
-</body> -->
 
 </html>

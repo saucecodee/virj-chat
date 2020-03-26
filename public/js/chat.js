@@ -1,8 +1,8 @@
 // import { json } from "express";
 const $ = n => document.querySelector(n);
-let messageInput = $('#message')
+let messageInput = $('.message-input')
 let submitBtn = $('.submit-btn')
-let messages = $('#messages')
+let messages = $('.chat-body')
 let memberContainer = $('#listContainer');
 
 
@@ -16,9 +16,13 @@ console.log(groupDetails);
 
 // console.log(currentCode);
 $('.menu').onclick = () => {
-  $('.group-actions-menu').style.display === "none"
-    ? $('.group-actions-menu').style.display = "block"
-    : $('.group-actions-menu').style.display = "none"
+
+  if ($('.group-actions-menu').style.display === "none") {
+    $('.group-actions-menu').style.display = "block"
+  }
+  else {
+    $('.group-actions-menu').style.display = "none"
+  }
 }
 
 submitBtn.addEventListener('click', (e) => {
@@ -79,9 +83,9 @@ function updateMembers() {
       let output = ``;
       JSON.parse(result).data.forEach(data => {
         output += `
-            <li>
+            <p>
               ${data.username}
-            </li>
+            </p>
         `
       })
 
