@@ -27,9 +27,10 @@ $('.menu').onclick = () => {
 
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  console.log(messageInput.value);
-  sendMessage(messageInput.value)
-  messageInput.value = ''
+  if (messageInput.value.length !== 0) {
+    sendMessage(messageInput.value)
+    messageInput.value = ''
+  }
 })
 
 function sendMessage(text) {
@@ -95,4 +96,10 @@ function updateMembers() {
     .catch(error => console.log('error', error));
 }
 
-
+$('.message-form').onsubmit = e => {
+  e.preventDefault();
+  if (messageInput.value.length !== 0) {
+    sendMessage(messageInput.value)
+    messageInput.value = ''
+  }
+}

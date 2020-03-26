@@ -5,6 +5,9 @@
 }
 :root {
   --page-width: 700px;
+  --msg-width: 250px;
+  --msg-font: 1em;
+  --msg-font-h: 1em;
 }
 
 body::-webkit-scrollbar {
@@ -78,7 +81,7 @@ body::-webkit-scrollbar {
 
 }
 .message {
-  width: 250px;
+  width: var(--msg-width);
   background-color: #fff;
   border-radius: .4rem;
   padding: .3rem .5rem;
@@ -87,7 +90,8 @@ body::-webkit-scrollbar {
 }
 
 .message p {
-  margin: .5rem 0
+  margin: .5rem 0;
+  font-size: var(--msg-font);
 }
 
 .message.sent {
@@ -96,10 +100,12 @@ body::-webkit-scrollbar {
 
 .sent-time {
   text-align: right;
+  font-size: var(--msg-font);
 }
 
 .message h4{
   margin: 0;
+  font-size: var(--msg-font-h);
 }
 
 .arrow {
@@ -186,6 +192,9 @@ body::-webkit-scrollbar {
 @media (max-width: 700px){
   :root {
     --page-width: 400px;
+    --msg-font: .9em;
+    --msg-font-h: 1em;
+    --msg-width: 150px;
   }
   .group-actions {
     display: none;
@@ -200,10 +209,14 @@ body::-webkit-scrollbar {
 @media (max-width: 450px){
   :root {
     --page-width: 300px;
+    --msg-font: .7em;
+    --msg-font-h: .9em;
+    --msg-width: 120px;
   }
   .message-form {
     padding: 0 2rem 0 0;
   }
+
 }
 .scale-up-center{-webkit-animation:scale-up-center .4s cubic-bezier(.39,.575,.565,1.000) both;animation:scale-up-center .4s cubic-bezier(.39,.575,.565,1.000) both}
 /* ----------------------------------------------

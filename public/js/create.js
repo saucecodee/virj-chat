@@ -9,42 +9,23 @@ function snack(text) {
 
 $('.create-village-button').onclick = e => {
   e.preventDefault();
-  const val1 = $('.create-form')['username'].value.trim();
-  const val2 = $('.create-form')['village-name'].value.trim();
+  const userName = $('.create-form')['username'].value.trim();
+  const villageName = $('.create-form')['village-name'].value.trim();
 
-  if (val1.length > 0 && val2.length > 0) {
-    // Check for server responce
-    $('.loader-cont').style.display = "block";
-
-    let village_creation_status = $('#village-creation-status-control').checked;
-
-    if (!village_creation_status) {
-      $('.failure-cont').style.display = "block";
-      $('.loader-cont').style.display = "none";
-    }
-    else {
-      $('.failure-cont').style.display = "none";
-      "Navigate to the required village chat"
-      $('.create-village-button').style.display = "none";
-    }
+  if (userName.length > 0 && villageName.length > 0) {
+    createGroup(userName, villageName)
   }
   else {
     snack("Please fill the form")
   }
 }
 
-document.getElementById('createGroup').addEventListener('click', createGroup)
 
-function createGroup(e) {
-  e.preventDefault();
-
-  let groupName = document.getElementById('VillageName').value;
-  let userName = document.getElementById('username').value;
-
-  var headers = new Headers()
+function createGroup(userName, villageName) {
+  const headers = new Headers()
   headers.append("Content-Type", "application/json");
-  var raw = JSON.stringify({ groupName: groupName, username: userName });
-  var requestOptions = {
+  const raw = JSON.stringify({ groupName: villageName, username: userName });
+  const requestOptions = {
     method: 'POST',
     headers: headers,
     body: raw,
@@ -52,6 +33,8 @@ function createGroup(e) {
   };
 
   let currentHost = window.location.host;
+  $('.loader-cont').style.display = "block";
+  $('.create-village-button').style.display = "none";
 
   fetch("https://virj-chat.herokuapp.com/api/groups", requestOptions)
     .then(response => response.json())
@@ -60,12 +43,19 @@ function createGroup(e) {
         localStorage.setItem('data', JSON.stringify(result.data));
         window.location.href = 'chat.html';
         console.log(result.data.code);
-
-      };
-      $('.failure-cont').textContent = result.data.code + " is your tribal mark";
-      console.log(result.data.code);
-
+      } else {
+        $('.failure-cont').textContent = result.data.code + " is your tribal mark";
+        $('.loader-cont').style.display = "none";
+        $('.create-village-button').style.display = "block";
+        console.log(result.data.code);
+      }
     })
-    .catch(error => console.log('error', error));
+    .catch(error => {
+      console.log('error', error);
+      $('.failure-cont').textContent = result.data.code + " is your tribal mark";
+      $('.loader-cont').style.display = "none";
+      $('.create-village-button').style.display = "block";
+      console.log(result.data.code);
+    });
 }
 
