@@ -11,43 +11,27 @@ function snack(text) {
 
 $('.join-village-button').onclick = e => {
   e.preventDefault();
-  const val1 = $('.create-form')['username'].value.trim();
-  const val2 = $('.create-form')['village-id'].value.trim();
+  const code = $('.create-form')['village-id'].value.trim();
+  const userName = $('.create-form')['username'].value.trim();
 
-  if (val1.length > 0 && val2.length > 0) {
+  if (code.length > 0 && userName.length > 0) {
     $('.loader-cont').style.display = "block";
-
-    let village_creation_status = $('#village-creation-status-control').checked;
-
-    if (!village_creation_status) {
-      $('.failure-cont').style.display = "block";
-      $('.loader-cont').style.display = "none";
-    }
-    else {
-      $('.failure-cont').style.display = "none";
-      "Navigate to the required village chat"
-      $('.join-village-button').style.display = "none";
-    }
+    $('.join-village-button').style.display = "none";
+    joinGroup(code, userName);
   }
   else {
     snack("Please fill the form")
   }
 }
 
-function joinGroup(e) {
-  e.preventDefault();
+function joinGroup(code, userName) {
 
-  let code = document.getElementById('villageId').value;
-
-  let userName = document.getElementById('username').value;
-
-
-  var myHeaders = new Headers();
+  const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
-  var raw = JSON.stringify({ "code": code, "username": userName });
+  const raw = JSON.stringify({ "code": code, "username": userName });
 
-  var requestOptions = {
+  const requestOptions = {
     method: 'POST',
     headers: myHeaders,
     body: raw,
@@ -61,7 +45,8 @@ function joinGroup(e) {
         window.location.href = 'chat.html';
       }
       console.log(result);
-      $('.failure-cont').innerHTML = `<h3 id="success">${result.message}</h3>`;
+      $('.join-village-button').style.display = "block";
+      $('.failure-cont').innerHTML = `<h3 class="failure-message">${result.message}</h3>`;
       $('.failure-cont').style.display = "flex";
       $('.loader-cont').style.display = "none";
 
