@@ -12,69 +12,35 @@
 </head>
 
 <body>
+
   <div class="container">
+
     <div class="chat-header">
-      <p>Group Name</p>
+
+      <div class="group-name-code">
+        <p id="group-name">Group Name</p> -
+        <b id="group-code">grege</b>
+      </div>
+
       <div class="group-actions">
-        <p class="leave">leave</p>
-        <p onclick="showVillagers()" class="check-members">members</p>
+        <p class="leave">Leave</p>
+        <p onclick="showVillagers()" class="check-members">Members</p>
       </div>
-      <div class="group-actions-menu rotate-scale-up">
-        <!-- <div class="menu-spread"> -->
-          <p class="leave">leave</p>
-          <p onclick="showVillagers()" class="check-members">members</p>
-        <!-- </div> -->
-        
-      </div>
-      <p class="menu">menu</p>
 
     </div>
 
 
-    <hr class="divider">
     <div class="chat-area">
+
       <div class="chat-body">
-        <p style="text-align: center; color: #636161;"> Today</p>
-        <div class="alert">
-          <p>Welcome to the group chat vince{}</p>
-        </div>
+          <div class="alert">Welcome to the group chat <b>vince{}</b> </div>
 
         <div class="message">
           <div class="arrow"></div>
           <div class="sent-by">
             <h4>josh</h4>
           </div>
-          <p>hello Guys Thanks for having me in the virj chat </p>
-          <div class="sent-time">3:30pm </div>
-        </div>
-
-        <div class="message">
-          <div class="arrow"></div>
-          <div class="sent-by">
-            <h4>saucecode</h4>
-          </div>
-          <p>hello Guys Thanks for having me in the virj chat </p>
-          <div class="sent-time">3:30pm </div>
-        </div>
-
-
-
-        <div class="message sent">
-          <div class="arrow"></div>
-          <div class="sent-by">
-            <h4>vince{}</h4>
-          </div>
-          <p>hello Guys Thanks for having me in the virj chat </p>
-          <div class="sent-time">3:30pm </div>
-        </div>
-
-
-        <div class="message">
-          <div class="arrow"></div>
-          <div class="sent-by">
-            <h4>Raph (game engine)</h4>
-          </div>
-          <p>hello Guys Thanks for having me in the virj chat </p>
+          <p>hello Guys Thanks for having me in the virj chat Lorem ipsum, dolor sit amet consectetur adipisicing elit. At eligendi sit obcaecati iure laudantium placeat doloribus reiciendis accusamus sequi aliquam.</p>
           <div class="sent-time">3:30pm </div>
         </div>
 
@@ -86,37 +52,40 @@
           <p>hello Guys Thanks for having me in the virj chat </p>
           <div class="sent-time">3:30pm </div>
         </div>
+
       </div>
+
     </div>
 
-    <footer class="chat-footer">
+    <div class="chat-footer">
       <form action="" class="message-form">
-        <input placeholder="send a town cry here" type="text" name="message" class="message-input">
-        <p class="submit-btn"></button><img src="./assets/plane.svg" alt="" width="20px"></p>
+        <input placeholder="Send a town cry here" type="text" id="message" class="message-input" autofocus>
+        <button class="submit-btn">
+          <img src="./assets/plane.svg" alt="" width="20px">
+        </button>
       </form>
-    </footer>
-  </div>
-
-  <div id="village-modal-wrapper" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content scale-up-center">
-      <div class="village-members-header"> 
-        <h3>Village People</h3>
-        <span onclick="closeVillageModal()" class="close">&times;</span>
-      </div>
-      
-
-      <div class="members">
-        <div id="listContainer">
-          <p>Loading...</p>
-        </div>
-      </div>
     </div>
 
-  </div>
+    <div id="village-modal-wrapper" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content scale-up-center">
+        <div class="village-members-header">
+          <h3>Village People</h3>
+          <span onclick="closeVillageModal()" class="close">&times;</span>
+        </div>
 
-  <script src="./js/modal.js"></script>
-  <script src="./js/chat.js"></script>
+
+        <div class="members">
+          <div id="listContainer">
+            <p>Loading...</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="./js/modal.js"></script>
+    <script src="./js/chat.js"></script>
 </body>
 
 </html>
