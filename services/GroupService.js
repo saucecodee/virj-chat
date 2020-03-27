@@ -38,6 +38,7 @@ class UsersService {
 
     const data = {
       userId: user._id,
+      userName: user.username,
       groupId: g._id,
       groupName: g.name,
       code: g.code
@@ -70,6 +71,7 @@ class UsersService {
 
     const data = {
       userId: user._id,
+      userName: user.username,
       groupId: g._id,
       groupName: g.name,
       code: g.code,
