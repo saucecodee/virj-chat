@@ -22,15 +22,13 @@
 .create-form input {
   width: calc(100% - 100px);
   margin: 0 auto;
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  border: 1px solid var(--secondary-text-color);
   outline: 0;
 }
 .create-form button  {
-  width: 20% !important;
-  border-radius: 0.4rem;
-  padding: 0.5rem;
+  border-radius: 5px;
+  padding: 0 20px;
+  font-weight: 600;
+  text-transform: uppercase;
   background-color: var(--primary);
   border: 1px solid var(--primary);
   cursor: pointer;
