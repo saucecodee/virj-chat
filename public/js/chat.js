@@ -1,44 +1,51 @@
 // import { json } from "express";
 const $ = n => document.querySelector(n);
-let messageInput = $('.message-input')
-let messageForm = $('.message-form')
-let messages = $('.chat-body')
-let memberContainer = $('#listContainer');
+const messageInput = $('.message-input')
+const messageForm = $('.message-form')
+const chatBody = $('.chat-body')
+const memberContainer = $('#listContainer');
+const membersList = $("#members");
+const membersbtn = $(".check-members");
 
 let groupDetails = JSON.parse(localStorage.getItem('data'))
 
 
-messageForm.addEventListener('submit', (e) => {
+messageForm.addEventListener('submit', submitForm)
+
+membersbtn.addEventListener('click', getMembers);
+
+(function setGroupNameAndCode() {
+  $("#group-name").innerHTML = groupDetails?.groupName
+  $("#group-code").innerHTML = groupDetails?.groupCode
+})()
+
+function submitForm(e) {
   e.preventDefault();
   if (messageInput.value.length !== 0) {
     sendMessage(messageInput.value)
     messageInput.value = ''
   }
-})
+}
 
 function sendMessage(text) {
-  let content = text;
-  let d = new Date();
+  let date = new Date();
   let div = document.createElement('div')
   div.classList.add('message', 'sent')
   let message = `
           <div class="arrow"></div>
           <div class="sent-by"><h4>vince{}</h4></div>
-          <p> ${content} </p>
-          <div class="sent-time">${d.getHours()}:${d.getMinutes()}${d.getHours() >= 12 ? 'pm' : 'am'} </div>
+          <p> ${text} </p>
+          <div class="sent-time">${date.getHours()}:${date.getMinutes()}${date.getHours() >= 12 ? 'pm' : 'am'} </div>
 
   `;
   div.innerHTML = message;
-  messages.appendChild(div);
+  chatBody.appendChild(div);
   div.scrollIntoView();
 }
 
 function scrollToBottom() {
-  messages.lastElementChild.scrollIntoView()
+  chatBody.lastElementChild.scrollIntoView()
 }
-
-let membersList = $("#members");
-let membersbtn = $(".check-members");
 
 function showMembers() {
   membersList.style.display = "Block";
@@ -48,10 +55,7 @@ function hideMembers() {
   membersList.style.display = "none"
 }
 
-membersbtn.addEventListener('click', updateMembers);
-
-
-function updateMembers() {
+function getMembers() {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
@@ -66,23 +70,11 @@ function updateMembers() {
     .then(result => {
       let output = ``;
       JSON.parse(result).data.forEach(data => {
-        output += `
-            <p>
-              ${data.username}
-            </p>
-        `
+        output += `<p>${data.username}</p>`
       })
 
       memberContainer.innerHTML = output;
 
     })
     .catch(error => console.log('error', error));
-}
-
-$('.message-form').onsubmit = e => {
-  e.preventDefault();
-  if (messageInput.value.length !== 0) {
-    sendMessage(messageInput.value)
-    messageInput.value = ''
-  }
 }
