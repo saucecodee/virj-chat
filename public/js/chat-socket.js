@@ -1,4 +1,5 @@
-const socket = io('http://localhost:3030')
+const socket = io('https://virj-chat.herokuapp.com/')
+// const socket = io('localhost:3030')
 
 const messageForm = $('.message-form')
 messageForm.addEventListener('submit', sendMessage)

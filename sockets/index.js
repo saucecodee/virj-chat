@@ -2,8 +2,6 @@
 module.exports = (server) => {
      const io = require('socket.io')(server);
      io.on('connection', (socket) => {
-          console.log("uibuyvfdufavuf=======")
-
           socket.on('leave-village', (data) => {
                let groupId = data.groupId
 
@@ -16,7 +14,6 @@ module.exports = (server) => {
                socket.username = data.username;
                socket.userId = data.userId;
                let groupId = data.groupId
-               console.log("=================t==============t=====")
 
                socket.join(groupId);
                socket.to(groupId).emit('movement', { user: socket.username, event: 'joined' });
