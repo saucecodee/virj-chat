@@ -67,7 +67,7 @@ body{
         background-color: #ffffff7e;
     }
     .container > h1{
-        top: 200px;
+        top: 10px;
         position: absolute;
     }
 }
