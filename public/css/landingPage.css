@@ -21,7 +21,7 @@ body{
 }
 .container > h1{
     position: absolute;
-    top: 50px;
+    top: 200px;
 }
 
 .container > a{
@@ -67,7 +67,7 @@ body{
         background-color: #ffffff7e;
     }
     .container > h1{
-        top: 10px;
+        top: 150px;
         position: absolute;
     }
 }
