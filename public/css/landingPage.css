@@ -68,5 +68,6 @@ body{
     }
     .container > h1{
         top: 200px;
+        position: absolute;
     }
 }
