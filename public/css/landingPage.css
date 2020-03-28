@@ -43,3 +43,30 @@ body{
     font-weight: 500;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
+/* For responsive*/
+@media only screen and (max-width: 600px) {
+    body{
+        height: 97vh;
+        /* display: flex; */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* border: 2px solid green; */
+    }
+    .container{
+        height: 100vh;
+        width: 100vw;
+        border: 1px solid gray;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        position: relative;
+        background-color: #ffffff7e;
+    }
+    .container > h1{
+        top: 200px;
+    }
+}
