@@ -1,80 +1,59 @@
 // import { json } from "express";
-const $ = n => document.querySelector(n);
+window.app = {}
+window.$ =  n => document.querySelector(n);
+window.$$ =  n => document.querySelectorAll(n);
+window.app.chat = chat
+window.app.data = JSON.parse(localStorage.getItem('data'))
+
 const messageInput = $('.message-input')
-const messageForm = $('.message-form')
 const chatBody = $('.chat-body')
-const memberContainer = $('#listContainer');
-const membersList = $("#members");
-const membersbtn = $(".check-members");
-
-let groupDetails = JSON.parse(localStorage.getItem('data'))
 
 
-messageForm.addEventListener('submit', submitForm)
 
-membersbtn.addEventListener('click', getMembers);
+function appendMessage(username, text, date, userId) {
+  let chatDiv = chat(username, text, date, userId == app.data.userId)
+  chatBody.appendChild(chatDiv);
+  chatDiv.scrollIntoView();
+}
+
+function appendAlert(username, type) {
+  let chatDiv = alert(username, type)
+  chatBody.appendChild(chatDiv);
+}
+
+function chat(username, text, dat, isCurrentUser) {
+  let date = new Date()
+  const div = document.createElement('div')
+  div.classList.add('message', isCurrentUser ? "sent" : null)
+
+  let message = `
+    <div class="arrow"></div>
+    <div class="sent-by"><h4>${username}</h4></div>
+    <p> ${text} </p>
+    <div class="sent-time">${date.getHours()}:${date.getMinutes()}${date.getHours() >= 12 ? 'pm' : 'am'} </div>
+  `;
+
+  div.innerHTML = message;
+
+  return div
+}
+
+function alert(userName, type) {
+  const div = document.createElement('div')
+  div.classList.add('alert')
+  
+  let alertTypes = {}
+
+  alertTypes.welcome = `Welcome to the group chat <b>${userName}</b>`
+  alertTypes.left = `<b>${userName}</b> left the group`
+  alertTypes.joined = `<b>${userName}</b> joined the group`
+
+  div.innerHTML = alertTypes[type];
+
+  return div
+}
 
 (function setGroupNameAndCode() {
-  $("#group-name").innerHTML = groupDetails?.groupName
-  $("#group-code").innerHTML = groupDetails?.groupCode
+  $("#group-name").innerHTML = app?.data?.groupName
+  $("#group-code").innerHTML = app?.data?.code
 })()
-
-function submitForm(e) {
-  e.preventDefault();
-  if (messageInput.value.length !== 0) {
-    sendMessage(messageInput.value)
-    messageInput.value = ''
-  }
-}
-
-function sendMessage(text) {
-  let date = new Date();
-  let div = document.createElement('div')
-  div.classList.add('message', 'sent')
-  let message = `
-          <div class="arrow"></div>
-          <div class="sent-by"><h4>vince{}</h4></div>
-          <p> ${text} </p>
-          <div class="sent-time">${date.getHours()}:${date.getMinutes()}${date.getHours() >= 12 ? 'pm' : 'am'} </div>
-
-  `;
-  div.innerHTML = message;
-  chatBody.appendChild(div);
-  div.scrollIntoView();
-}
-
-function scrollToBottom() {
-  chatBody.lastElementChild.scrollIntoView()
-}
-
-function showMembers() {
-  membersList.style.display = "Block";
-}
-
-function hideMembers() {
-  membersList.style.display = "none"
-}
-
-function getMembers() {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-
-  var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
-  };
-
-  fetch("https://virj-chat.herokuapp.com/api/groups/5e7b52cd2b25d70017ed2557/members", requestOptions)
-    .then(response => response.text())
-    .then(result => {
-      let output = ``;
-      JSON.parse(result).data.forEach(data => {
-        output += `<p>${data.username}</p>`
-      })
-
-      memberContainer.innerHTML = output;
-
-    })
-    .catch(error => console.log('error', error));
-}

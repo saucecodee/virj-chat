@@ -42,6 +42,7 @@ function joinGroup(code, userName) {
     .then(response => response.json())
     .then(result => {
       if(result.success == true){
+        localStorage.setItem('data', JSON.stringify(result.data));
         window.location.href = 'chat.html';
       }
       console.log(result);
@@ -49,8 +50,6 @@ function joinGroup(code, userName) {
       $('.failure-cont').innerHTML = `<h3 class="failure-message">${result.message}</h3>`;
       $('.failure-cont').style.display = "flex";
       $('.loader-cont').style.display = "none";
-
-      console.log(result.message);
     })
     .catch(error => console.log('error', error));
 }

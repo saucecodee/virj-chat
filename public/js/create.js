@@ -42,12 +42,10 @@ function createGroup(userName, villageName) {
       if (result.success == true) {
         localStorage.setItem('data', JSON.stringify(result.data));
         window.location.href = 'chat.html';
-        console.log(result.data.code);
       } else {
         $('.failure-cont').textContent = result.data.code + " is your tribal mark";
         $('.loader-cont').style.display = "none";
         $('.create-village-button').style.display = "block";
-        console.log(result.data.code);
       }
     })
     .catch(error => {
@@ -55,7 +53,6 @@ function createGroup(userName, villageName) {
       $('.failure-cont').textContent = result.data.code + " is your tribal mark";
       $('.loader-cont').style.display = "none";
       $('.create-village-button').style.display = "block";
-      console.log(result.data.code);
     });
 }
 

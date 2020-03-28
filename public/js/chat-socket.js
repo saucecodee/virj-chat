@@ -1,34 +1,60 @@
-const socket = io('https://virj-chat.herokuapp.com/')
-const messageContainer = document.getElementById('message-container')
-const messageForm2 = document.getElementById('send-container')
-const messageInput2ggg = document.getElementById('message-input')
+const socket = io('http://localhost:3030')
 
-const name = prompt('What is your name?')
-appendMessage('You joined')
-socket.emit('new-user', name)
+const messageForm = $('.message-form')
+messageForm.addEventListener('submit', sendMessage)
 
-socket.on('chat-message', data => {
-  appendMessage(`${data.name}: ${data.message}`)
+
+socket.on('new-message', data => {
+  const { user, message, sentAt, userId } = data
+  appendMessage(user, message, sentAt, userId)
 })
 
-socket.on('user-connected', name => {
-  appendMessage(`${name} connected`)
+socket.on('movement', data => {
+  const { user, event } = data
+  appendAlert(user, event)
 })
 
-socket.on('user-disconnected', name => {
-  appendMessage(`${name} disconnected`)
+socket.on('user-disconnected', data => {
+  const { user, event } = data
+  appendAlert(user, event)
 })
 
-messageForm.addEventListener('submit', e => {
-  e.preventDefault()
-  const message = messageInput.value
-  appendMessage(`You: ${message}`)
-  socket.emit('send-chat-message', message)
-  messageInput.value = ''
-})
-
-function appendMessage(message) {
-  const messageElement = document.createElement('div')
-  messageElement.innerText = message
-  messageContainer.append(messageElement)
+function joinVillage() {
+  appendAlert(app.data.userName, 'welcome')
+  const data = {
+    groupId: app.data.groupId,
+    userId: app.data.userId,
+    username: app.data.userName
+  }
+  socket.emit('join-village', data)
 }
+
+function leaveVillage() {
+  const data = {
+    groupId: app.data.groupId,
+    userId: app.data.userId
+  }
+  socket.emit('leave-village', data)
+  window.location.href = 'exit.html';
+}
+
+function sendMessage(e) {
+  e.preventDefault();
+  if (messageInput.value.length !== 0) {
+    appendMessage(app.data.userName, messageInput.value, new Date(), app.data.userId)
+
+    const data = {
+      groupId: app.data.groupId,
+      userId: app.data.userId,
+      message: messageInput.value,
+      date: new Date()
+    }
+    socket.emit('send-message', data)
+
+    messageInput.value = ''
+  }
+}
+
+joinVillage()
+
+console.log(app)

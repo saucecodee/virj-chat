@@ -23,7 +23,7 @@
       </div>
 
       <div class="group-actions">
-        <p class="leave">Leave</p>
+        <p onclick="leaveVillage()" class="leave">Leave</p>
         <p onclick="showVillagers()" class="check-members">Members</p>
       </div>
 
@@ -31,30 +31,7 @@
 
 
     <div class="chat-area">
-
-      <div class="chat-body">
-          <div class="alert">Welcome to the group chat <b>vince{}</b> </div>
-
-        <div class="message">
-          <div class="arrow"></div>
-          <div class="sent-by">
-            <h4>josh</h4>
-          </div>
-          <p>hello Guys Thanks for having me in the virj chat Lorem ipsum, dolor sit amet consectetur adipisicing elit. At eligendi sit obcaecati iure laudantium placeat doloribus reiciendis accusamus sequi aliquam.</p>
-          <div class="sent-time">3:30pm </div>
-        </div>
-
-        <div class="message sent">
-          <div class="arrow"></div>
-          <div class="sent-by">
-            <h4>vince{}</h4>
-          </div>
-          <p>hello Guys Thanks for having me in the virj chat </p>
-          <div class="sent-time">3:30pm </div>
-        </div>
-
-      </div>
-
+      <div class="chat-body"></div>
     </div>
 
     <div class="chat-footer">
@@ -84,9 +61,10 @@
 
     </div>
 
-    <script defer src="https://virj-chat.herokuapp.com/socket.io/socket.io.js"></script>
+    <!-- <script defer src="https://virj-chat.herokuapp.com/socket.io/socket.io.js"></script> -->
+    <script defer src="http://localhost:3030/socket.io/socket.io.js"></script>
+    <script src="./js/chat.js"></script>
     <script defer src="./js/modal.js"></script>
-    <script defer src="./js/chat.js"></script>
     <script defer src="./js/chat-socket.js"></script>
 </body>
 

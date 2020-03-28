@@ -5,15 +5,19 @@ const http = require('http');
 const express = require('express');
 const app = express();
 const server = http.createServer(app);
+// const io = require('socket.io')(server);
 
 const middlewares = require('./middlewares');
 const errorHandler = require('./middlewares/errorHandler');
 const routes = require('./routes');
+const sockets = require("./sockets")
 
 const databaseConfig = require('./config/db');
 const port = process.env.PORT || 3030;
 
 middlewares(app);
+
+sockets(server)
 
 app.use('/api', routes(server))
 
