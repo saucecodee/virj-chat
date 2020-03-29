@@ -5,7 +5,6 @@
 }
 :root {
   --page-width: 700px;
-  --msg-width: 250px;
   --msg-font: 0.9em;
   --msg-font-h: 0.9em;
 }
@@ -107,7 +106,8 @@ body::-webkit-scrollbar {
 
 }
 .message {
-  width: var(--msg-width);
+  min-width: 100px;
+  max-width: 65%;
   background-color: #fff;
   border-radius: .4rem;
   padding: .3rem .5rem;
