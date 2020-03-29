@@ -1,22 +1,25 @@
+const {leaveGroup} = require("../services/GroupService")
 
 module.exports = (server) => {
+
      const io = require('socket.io')(server);
+
      io.on('connection', (socket) => {
           socket.on('leave-village', (data) => {
-               let groupId = data.groupId
+               // let groupId = data.groupId
 
                //remove form group array
-               socket.leave(groupId);
-               socket.to(groupId).emit('movement', { user: socket.username, event: 'left' });
+               socket.leave(socket.groupId);
+               socket.to(socket.groupId).emit('movement', { user: socket.username, event: 'left' });
           });
 
           socket.on('join-village', (data) => {
                socket.username = data.username;
                socket.userId = data.userId;
-               let groupId = data.groupId
+               socket.groupId = data.groupId;
 
-               socket.join(groupId);
-               socket.to(groupId).emit('movement', { user: socket.username, event: 'joined' });
+               socket.join(socket.groupId);
+               socket.to(socket.groupId).emit('movement', { user: socket.username, event: 'joined' });
           });
 
           socket.on('send-message', (data) => {
@@ -31,9 +34,8 @@ module.exports = (server) => {
           });
 
           socket.on('disconnect', () => {
-               console.log("left  =============================++++++")
-               //     socket.broadcast.emit('user-disconnected', users[socket.id])
-               //     delete users[socket.id]
+               socket.leave(socket.groupId);
+               socket.to(socket.groupId).emit('movement', { user: socket.username, event: 'left' });
           })
      })
 }
