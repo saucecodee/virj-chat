@@ -4,7 +4,7 @@ function snack(text) {
   $('.snack-bar').style.display = "block";
   $('.snack-bar').textContent = text;
 
-  const timed = setTimeout(() => $('.snack-bar').style.display = "none", 2000);
+  const timed = setTimeout(() => $('.snack-bar').style.display = "none", 4000);
 }
 
 $('.create-village-button').onclick = e => {
@@ -16,7 +16,7 @@ $('.create-village-button').onclick = e => {
     createGroup(userName, villageName)
   }
   else {
-    snack("Please fill the form")
+    snack("Don't be faster than your shadow, Please fill the form 😋")
   }
 }
 

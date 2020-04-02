@@ -79,13 +79,15 @@
 }
 
 .snack-bar {
-  background-color: rgba(0, 0, 0, 0.678);
+  background-color: #cc9b13;
   color: white;
   position: absolute;
   top: 90%;
-  padding: 0.5rem;
-  left: 43%;
+  padding: 1.5rem;
+  left: 23%;
   display: none;
+  font-size: 1.5rem;
+  border-radius: 6px;
 }
 
 .success-message{
