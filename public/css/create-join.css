@@ -23,11 +23,14 @@
   width: calc(100% - 100px);
   margin: 0 auto;
   outline: 0;
+  border-radius: 0.5rem;
 }
 .create-form button  {
   border-radius: 5px;
-  padding: 0 20px;
+  padding: 0.75rem 3rem;
+  font-size: 1rem;
   font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   background-color: var(--primary);
   border: 1px solid var(--primary);
