@@ -16,7 +16,7 @@ git clone https://github.com/saucecodee/virj-chat.git
 ```
 2. Install the dependencies 
 ```
-npm i
+npm install
 ```
 3. Run the server
 ```
@@ -29,12 +29,6 @@ To run the tests run
 ```
 npm run test
 ```
-
-### Break down into end to end tests
-
-
-### And coding style tests
-
 
 ## Deployment
 You can deploy the project to heroku
